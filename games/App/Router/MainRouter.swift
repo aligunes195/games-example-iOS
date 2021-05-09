@@ -15,7 +15,7 @@ final class MainRouter: RouterProtocol {
     
     init() {
         childRouters = [
-            .search : SearchRouter(),
+            .games : GamesRouter(),
             .favourites : FavouritesRouter()
         ]
         
@@ -23,7 +23,7 @@ final class MainRouter: RouterProtocol {
         tabBarController.viewControllers = childRouters
             .sorted(by: { $0.key.rawValue < $1.key.rawValue })
             .map { $0.value.navController }
-        tabBarController.changeScene(.search)
+        tabBarController.changeScene(.games)
         rootVC = tabBarController
     }
     

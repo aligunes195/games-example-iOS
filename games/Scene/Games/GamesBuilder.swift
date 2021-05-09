@@ -1,5 +1,5 @@
 //
-//  SearchBuilder.swift
+//  GamesBuilder.swift
 //  games
 //
 //  Created by ali güneş on 1.06.2020.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-final class SearchBuilder {
-    static func build() -> SearchVC {
-        let vc = SearchVC()
-        vc.vm = SearchVM()
+final class GamesBuilder {
+    static func build() -> GamesVC {
+        let vc = GamesVC()
+        vc.vm = GamesVM()
         return vc
     }
 }

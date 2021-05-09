@@ -1,5 +1,5 @@
 //
-//  SearchVM.swift
+//  GamesContract.swift
 //  games
 //
 //  Created by ali güneş on 1.06.2020.
@@ -8,8 +8,6 @@
 
 import Foundation
 
-final class SearchVM: SearchVMProtocol {
-    func load() {
-        
-    }
+protocol GamesVMProtocol: class {
+    func load()
 }

@@ -5,21 +5,18 @@
       "scale" : "1x"
     },
     {
+      "filename" : "game-console-60x48.png",
       "idiom" : "universal",
-      "filename" : "Webp.net-resizeimage.png",
       "scale" : "2x"
     },
     {
+      "filename" : "game-console-90x72.png",
       "idiom" : "universal",
-      "filename" : "Webp.net-resizeimage-2.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
-  },
-  "properties" : {
-    "template-rendering-intent" : "template"
+    "author" : "xcode",
+    "version" : 1
   }
 }

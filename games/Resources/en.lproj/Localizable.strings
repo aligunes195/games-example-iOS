@@ -6,6 +6,6 @@
   Copyright © 2020 ali güneş. All rights reserved.
 */
 
-"SEARCH_TITLE" = "Search";
+"GAMES_TITLE" = "Games";
 "FAVOURITES_TITLE" = "Favourites";
 "FAVOURITES_TITLE_NUMBER" = "Favourites (%@)";

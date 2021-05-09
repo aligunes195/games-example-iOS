@@ -1,5 +1,5 @@
 //
-//  SearchVC.swift
+//  GamesVC.swift
 //  games
 //
 //  Created by ali güneş on 31.05.2020.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-final class SearchVC: UIViewController {
-    var vm: SearchVMProtocol!
+final class GamesVC: UIViewController {
+    var vm: GamesVMProtocol!
     
     private lazy var searchController = UISearchController(searchResultsController: nil)
     
@@ -18,6 +18,6 @@ final class SearchVC: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .always
         
-        title = String.localized("SEARCH_TITLE")
+        title = String.localized("GAMES_TITLE")
     }
 }

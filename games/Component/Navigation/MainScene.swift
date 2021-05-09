@@ -9,6 +9,6 @@
 import Foundation
 
 enum MainScene: Int {
-    case search = 0
+    case games = 0
     case favourites = 1
 }

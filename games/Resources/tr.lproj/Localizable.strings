@@ -6,6 +6,6 @@
   Copyright © 2020 ali güneş. All rights reserved.
 */
 
-"SEARCH_TITLE" = "Arama";
+"GAMES_TITLE" = "Oyunlar";
 "FAVOURITES_TITLE" = "Favoriler";
 "FAVOURITES_TITLE_NUMBER" = "Favoriler (%@)";

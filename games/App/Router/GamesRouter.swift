@@ -1,5 +1,5 @@
 //
-//  SearchRouter.swift
+//  GamesRouter.swift
 //  games
 //
 //  Created by ali güneş on 31.05.2020.
@@ -8,17 +8,17 @@
 
 import UIKit
 
-final class SearchRouter: NavigatingRouterProtocol {
+final class GamesRouter: NavigatingRouterProtocol {
     var rootVC: UIViewController
     var navController: UINavigationController
     
     init() {
-        rootVC = SearchBuilder.build()
+        rootVC = GamesBuilder.build()
         navController = UINavigationController(rootViewController: rootVC)
         navController.view.backgroundColor = .white
-        navController.tabBarItem = UITabBarItem(title: String.localized("SEARCH_TITLE"),
-                                                image: UIImage(named: "search-icon"),
-                                                selectedImage: UIImage(named: "search-icon-selected"))
+        navController.tabBarItem = UITabBarItem(title: String.localized("GAMES_TITLE"),
+                                                image: UIImage(named: "game-console-icon"),
+                                                selectedImage: UIImage(named: "game-console-icon"))
         navController.navigationBar.prefersLargeTitles = true
     }
     
