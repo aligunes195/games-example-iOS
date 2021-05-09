@@ -9,7 +9,14 @@
 import UIKit
 
 final class MainRouter: RouterProtocol {
-    let rootVC: UIViewController
+    lazy var rootVC: UIViewController = {
+        let tabBarController = MainTabBarController()
+        tabBarController.viewControllers = childRouters
+            .sorted(by: { $0.key.rawValue < $1.key.rawValue })
+            .map { $0.value.navController }
+        tabBarController.changeScene(.games)
+        return tabBarController
+    }()
     
     private let childRouters: [MainScene: NavigatingRouterProtocol]
     
@@ -18,12 +25,10 @@ final class MainRouter: RouterProtocol {
             .games : GamesRouter(),
             .favourites : FavouritesRouter()
         ]
-        
-        let tabBarController = MainTabBarController()
-        tabBarController.viewControllers = childRouters
-            .sorted(by: { $0.key.rawValue < $1.key.rawValue })
-            .map { $0.value.navController }
-        tabBarController.changeScene(.games)
-        rootVC = tabBarController
+    }
+    
+    func start() {
+        childRouters.values.forEach { $0.start() }
+        app.window.rootViewController = self.rootVC
     }
 }

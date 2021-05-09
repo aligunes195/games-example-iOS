@@ -9,16 +9,20 @@
 import UIKit
 
 final class FavouritesRouter: NavigatingRouterProtocol {
-    let rootVC: UIViewController
     let navController: UINavigationController
     
+    lazy var rootVC: UIViewController = FavouritesBuilder.build()
+    
     init() {
-        rootVC = FavouritesBuilder.build()
-        navController = UINavigationController(rootViewController: rootVC)
+        navController = UINavigationController()
         navController.view.backgroundColor = .white
         navController.tabBarItem = UITabBarItem(title: String.localized("FAVOURITES_TITLE"),
                                                 image: UIImage(named: "favourite-icon"),
                                                 selectedImage: UIImage(named: "favourite-icon"))
         navController.navigationBar.prefersLargeTitles = true
+    }
+    
+    func start() {
+        navController.setViewControllers([rootVC], animated: false)
     }
 }

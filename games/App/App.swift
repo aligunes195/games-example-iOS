@@ -27,7 +27,7 @@ final class App {
     }
     
     func start() {
-        self.window.rootViewController = self.router.rootVC
+        self.router.start()
         self.window.makeKeyAndVisible()
     }
 }

@@ -9,7 +9,15 @@
 import Foundation
 
 final class GamesVM: GamesVMProtocol {
+    weak var delegate: GamesVMOutputDelegate?
+    
     private let networkManager: NetworkManager
+    
+    private(set) var items = [GamePresentation]() {
+        didSet {
+            
+        }
+    }
     
     init() {
         guard let container = app.container as? MainContainer else {
@@ -23,10 +31,21 @@ final class GamesVM: GamesVMProtocol {
                                    page_size: 10,
                                    page: 1,
                                    search: "gtav")
-        self.networkManager.request(.search(dto: dto)) { result in
+        self.networkManager.request(.search(dto: dto)) { [weak self] (result: NetworkResult<SearchListResponseDTO>) in
+            guard let self = self else { return }
             switch result {
             case .success(let value):
-                print("success, value count: \(value.count)")
+                self.items.append(contentsOf: value.results.map {
+                    GamePresentation(id: $0.id,
+                                     name: $0.name,
+                                     metacritic: $0.metacritic,
+                                     genres: $0.genres.map { $0.name },
+                                     clickedBefore: false,
+                                     imageUrl: nil)
+                })
+                DispatchQueue.main.async {
+                    self.delegate?.reloadData()
+                }
             case .failure(let error):
                 printError(error)
             }

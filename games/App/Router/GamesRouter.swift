@@ -9,16 +9,27 @@
 import UIKit
 
 final class GamesRouter: NavigatingRouterProtocol {
-    let rootVC: UIViewController
     let navController: UINavigationController
     
+    lazy var rootVC: UIViewController = GamesBuilder.build()
+    
     init() {
-        rootVC = GamesBuilder.build()
-        navController = UINavigationController(rootViewController: rootVC)
+        navController = UINavigationController()
         navController.view.backgroundColor = .white
         navController.tabBarItem = UITabBarItem(title: String.localized("GAMES_TITLE"),
                                                 image: UIImage(named: "game-console-icon"),
                                                 selectedImage: UIImage(named: "game-console-icon"))
         navController.navigationBar.prefersLargeTitles = true
+    }
+    
+    func start() {
+        (rootVC as! GamesVC).routerDelegate = self
+        navController.setViewControllers([rootVC], animated: false)
+    }
+}
+
+extension GamesRouter: GamesNavigationDelegate {
+    func showDetail(with id: Int) {
+        
     }
 }

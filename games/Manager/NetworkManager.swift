@@ -9,7 +9,7 @@
 import Alamofire
 
 final class NetworkManager {
-    private let networkQueue = DispatchQueue(label: "asdasf", attributes: .concurrent)
+    private let networkQueue = DispatchQueue(label: "\(AppConfiguration.shared.bundleIdentifier).network.manager.queue", attributes: .concurrent)
     
     @discardableResult
     func request(_ service: NetworkService, completion: ((NetworkResult<Data>) -> Void)?) -> DataRequest? {

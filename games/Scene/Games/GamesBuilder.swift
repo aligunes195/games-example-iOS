@@ -6,11 +6,11 @@
 //  Copyright © 2020 ali güneş. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class GamesBuilder {
     static func build() -> GamesVC {
-        let vc = GamesVC()
+        let vc = UIStoryboard.load(.games) as! GamesVC
         vc.vm = GamesVM()
         return vc
     }
