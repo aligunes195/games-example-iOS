@@ -9,8 +9,8 @@
 import UIKit
 
 final class GamesRouter: NavigatingRouterProtocol {
-    var rootVC: UIViewController
-    var navController: UINavigationController
+    let rootVC: UIViewController
+    let navController: UINavigationController
     
     init() {
         rootVC = GamesBuilder.build()
@@ -21,6 +21,4 @@ final class GamesRouter: NavigatingRouterProtocol {
                                                 selectedImage: UIImage(named: "game-console-icon"))
         navController.navigationBar.prefersLargeTitles = true
     }
-    
-    func start() {}
 }

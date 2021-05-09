@@ -9,13 +9,15 @@
 import Foundation
 
 final class MainContainer: ContainerProtocol {
-    func load() {
-        
+    let networkManager: NetworkManager
+    
+    init() {
+        self.networkManager = NetworkManager()
     }
     
-    func unload() {
-        
-    }
+    func load() {}
+    
+    func unload() {}
     
     func buildRouter() -> RouterProtocol {
         return MainRouter()

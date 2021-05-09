@@ -10,6 +10,4 @@ import UIKit
 
 protocol RouterProtocol: class {
     var rootVC: UIViewController { get }
-    
-    func start()
 }

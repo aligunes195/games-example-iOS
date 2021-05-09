@@ -9,8 +9,8 @@
 import UIKit
 
 final class FavouritesRouter: NavigatingRouterProtocol {
-    var rootVC: UIViewController
-    var navController: UINavigationController
+    let rootVC: UIViewController
+    let navController: UINavigationController
     
     init() {
         rootVC = FavouritesBuilder.build()
@@ -21,6 +21,4 @@ final class FavouritesRouter: NavigatingRouterProtocol {
                                                 selectedImage: UIImage(named: "favourite-icon"))
         navController.navigationBar.prefersLargeTitles = true
     }
-    
-    func start() {}
 }

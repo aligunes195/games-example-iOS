@@ -9,7 +9,7 @@
 import UIKit
 
 final class MainRouter: RouterProtocol {
-    var rootVC: UIViewController
+    let rootVC: UIViewController
     
     private let childRouters: [MainScene: NavigatingRouterProtocol]
     
@@ -25,9 +25,5 @@ final class MainRouter: RouterProtocol {
             .map { $0.value.navController }
         tabBarController.changeScene(.games)
         rootVC = tabBarController
-    }
-    
-    func start() {
-        app.window.rootViewController = rootVC
     }
 }

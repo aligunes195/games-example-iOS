@@ -1,5 +1,5 @@
 //
-//  SearchRequestDTO.swift
+//  DetailRequestDTO.swift
 //  games
 //
 //  Created by ali güneş on 9.05.2021.
@@ -8,9 +8,6 @@
 
 import Foundation
 
-struct SearchRequestDTO: Encodable {
+struct DetailRequestDTO: Encodable {
     let key: String
-    let page_size: UInt32
-    let page: UInt32
-    let search: String?
 }

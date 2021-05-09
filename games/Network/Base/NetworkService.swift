@@ -17,20 +17,20 @@ protocol NetworkServiceProtocol {
 
 enum NetworkService {
     case search(dto: SearchRequestDTO)
-    case detail(id: UInt32)
+    case detail(id: UInt32, dto: DetailRequestDTO)
 }
 
 extension NetworkService: NetworkServiceProtocol {
     var path: String {
         switch self {
         case .search: return "/api/games"
-        case .detail(let id): return "/api/games/\(id)"
+        case .detail(let id, _): return "/api/games/\(id)"
         }
     }
     
     var method: HTTPMethod {
         switch self {
-        case .search: return .post
+        case .search: return .get
         case .detail: return .get
         }
     }
@@ -38,7 +38,7 @@ extension NetworkService: NetworkServiceProtocol {
     var object: Encodable? {
         switch self {
         case .search(let dto): return dto
-        default: return nil
+        case .detail(_, let dto): return dto
         }
     }
     

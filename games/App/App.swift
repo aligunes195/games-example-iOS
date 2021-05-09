@@ -20,15 +20,14 @@ final class App {
             self.container.load()
         }
     }
-    var router: RouterProtocol
+    lazy var router: RouterProtocol = self.container.buildRouter()
     
     init() {
         self.container = ContainerBuilder.build()
-        self.router = container.buildRouter()
     }
     
     func start() {
-        router.start()
-        window.makeKeyAndVisible()
+        self.window.rootViewController = self.router.rootVC
+        self.window.makeKeyAndVisible()
     }
 }

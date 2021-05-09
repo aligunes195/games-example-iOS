@@ -14,4 +14,5 @@ final class AppConfiguration {
     private init() {}
     
     let baseUrl = "https://api.rawg.io"
+    let apiKey = "5f3f08b28e8745b599aed7512634c491"
 }

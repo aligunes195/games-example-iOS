@@ -19,5 +19,7 @@ final class GamesVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         
         title = String.localized("GAMES_TITLE")
+        
+        vm.load()
     }
 }
