@@ -26,12 +26,13 @@
 		8894A1A5248C2F8F0009F8A6 /* ContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894A1A4248C2F8F0009F8A6 /* ContainerProtocol.swift */; };
 		88961E382647F8D2008FA7ED /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E372647F8D1008FA7ED /* AppConfiguration.swift */; };
 		88961E3C2647F9D6008FA7ED /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E3B2647F9D6008FA7ED /* NetworkManager.swift */; };
-		88961E492647FFDA008FA7ED /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E482647FFDA008FA7ED /* NetworkServiceProtocol.swift */; };
+		88961E492647FFDA008FA7ED /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E482647FFDA008FA7ED /* NetworkService.swift */; };
 		88961E4D26480004008FA7ED /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E4C26480004008FA7ED /* NetworkError.swift */; };
 		88961E502648010D008FA7ED /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E4F2648010D008FA7ED /* NetworkResult.swift */; };
 		88961E5326480220008FA7ED /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5226480220008FA7ED /* Data.swift */; };
 		88961E5626480A9F008FA7ED /* Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5526480A9F008FA7ED /* Print.swift */; };
 		88961E5926480F08008FA7ED /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5826480F08008FA7ED /* Encodable.swift */; };
+		88961E5D26482034008FA7ED /* SearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5C26482034008FA7ED /* SearchRequestDTO.swift */; };
 		88B48598249571C8002D8DD8 /* NavigatingRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B48597249571C8002D8DD8 /* NavigatingRouterProtocol.swift */; };
 		88B6974C2647B69D00E36A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6974B2647B69D00E36A1F /* AppDelegate.swift */; };
 		88B6975B2647B90E00E36A1F /* ContainerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6975A2647B90E00E36A1F /* ContainerBuilder.swift */; };
@@ -67,12 +68,13 @@
 		8894A1A4248C2F8F0009F8A6 /* ContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerProtocol.swift; sourceTree = "<group>"; };
 		88961E372647F8D1008FA7ED /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		88961E3B2647F9D6008FA7ED /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		88961E482647FFDA008FA7ED /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		88961E482647FFDA008FA7ED /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		88961E4C26480004008FA7ED /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		88961E4F2648010D008FA7ED /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		88961E5226480220008FA7ED /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		88961E5526480A9F008FA7ED /* Print.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Print.swift; sourceTree = "<group>"; };
 		88961E5826480F08008FA7ED /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
+		88961E5C26482034008FA7ED /* SearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestDTO.swift; sourceTree = "<group>"; };
 		88B48597249571C8002D8DD8 /* NavigatingRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatingRouterProtocol.swift; sourceTree = "<group>"; };
 		88B6974B2647B69D00E36A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = games/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		88B6975A2647B90E00E36A1F /* ContainerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBuilder.swift; sourceTree = "<group>"; };
@@ -258,7 +260,6 @@
 			children = (
 				88961E452647FF97008FA7ED /* Base */,
 				88961E462647FFAD008FA7ED /* Model */,
-				88961E472647FFB7008FA7ED /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -266,7 +267,7 @@
 		88961E452647FF97008FA7ED /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				88961E482647FFDA008FA7ED /* NetworkServiceProtocol.swift */,
+				88961E482647FFDA008FA7ED /* NetworkService.swift */,
 				88961E4C26480004008FA7ED /* NetworkError.swift */,
 				88961E4F2648010D008FA7ED /* NetworkResult.swift */,
 			);
@@ -276,15 +277,9 @@
 		88961E462647FFAD008FA7ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				88961E5C26482034008FA7ED /* SearchRequestDTO.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		88961E472647FFB7008FA7ED /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		88B48596248C4A2F002D8DD8 /* Builder */ = {
@@ -427,8 +422,9 @@
 				88961E502648010D008FA7ED /* NetworkResult.swift in Sources */,
 				88961E4D26480004008FA7ED /* NetworkError.swift in Sources */,
 				8894A18224832E760009F8A6 /* MainScene.swift in Sources */,
-				88961E492647FFDA008FA7ED /* NetworkServiceProtocol.swift in Sources */,
+				88961E492647FFDA008FA7ED /* NetworkService.swift in Sources */,
 				88961E5626480A9F008FA7ED /* Print.swift in Sources */,
+				88961E5D26482034008FA7ED /* SearchRequestDTO.swift in Sources */,
 				8894A1762483199E0009F8A6 /* MainRouter.swift in Sources */,
 				8894A170248314A40009F8A6 /* App.swift in Sources */,
 				88961E5326480220008FA7ED /* Data.swift in Sources */,

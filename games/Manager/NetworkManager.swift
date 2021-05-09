@@ -12,7 +12,7 @@ final class NetworkManager {
     private let networkQueue = DispatchQueue(label: "asdasf", attributes: .concurrent)
     
     @discardableResult
-    func request<T: NetworkServiceProtocol>(_ service: T, completion: ((NetworkResult<Data>) -> Void)?) -> DataRequest? {
+    func request(_ service: NetworkService, completion: ((NetworkResult<Data>) -> Void)?) -> DataRequest? {
         let url: URLConvertible = AppConfiguration.shared.baseUrl + service.path
         let parameters: Parameters? = {
             guard let encodable = service.object else {
@@ -54,7 +54,7 @@ final class NetworkManager {
     }
     
     @discardableResult
-    func request<T: NetworkServiceProtocol, U: Decodable>(_ service: T, completion: ((NetworkResult<U>) -> Void)?) -> DataRequest? {
+    func request<U: Decodable>(_ service: NetworkService, completion: ((NetworkResult<U>) -> Void)?) -> DataRequest? {
         return request(service) { result in
             switch result {
             case .success(let data):

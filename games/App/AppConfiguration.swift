@@ -13,5 +13,5 @@ final class AppConfiguration {
     
     private init() {}
     
-    let baseUrl = "https://api.rawg.io/api"
+    let baseUrl = "https://api.rawg.io"
 }
