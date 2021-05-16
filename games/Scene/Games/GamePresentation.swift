@@ -15,5 +15,5 @@ struct GamePresentation {
     let genres: [String]
     let clickedBefore: Bool
     
-    var imageUrl: String?
+    var imageData: DataWrapper?
 }

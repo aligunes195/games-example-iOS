@@ -56,7 +56,7 @@ extension GamesVC: UICollectionViewDelegateFlowLayout {
 }
 
 extension GamesVC: GamesVMOutputDelegate {
-    func reloadData() {
+    func reloadData(rows: [Int]?) {
         collectionView.reloadData()
     }
 }

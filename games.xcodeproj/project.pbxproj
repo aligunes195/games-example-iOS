@@ -15,6 +15,7 @@
 		8811FE8F26488E3400E78864 /* SearchListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE8E26488E3400E78864 /* SearchListResponseDTO.swift */; };
 		8811FE92264894F500E78864 /* SearchResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE91264894F500E78864 /* SearchResponseDTO.swift */; };
 		8811FE952648955D00E78864 /* GenreResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE942648955D00E78864 /* GenreResponseDTO.swift */; };
+		8811FE982648B4A500E78864 /* DataWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8811FE972648B4A500E78864 /* DataWrapper.swift */; };
 		885314E424791CD50054F839 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 885314E324791CD50054F839 /* Assets.xcassets */; };
 		8894A170248314A40009F8A6 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894A16F248314A40009F8A6 /* App.swift */; };
 		8894A173248318ED0009F8A6 /* RouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8894A172248318ED0009F8A6 /* RouterProtocol.swift */; };
@@ -64,6 +65,7 @@
 		8811FE8E26488E3400E78864 /* SearchListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListResponseDTO.swift; sourceTree = "<group>"; };
 		8811FE91264894F500E78864 /* SearchResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseDTO.swift; sourceTree = "<group>"; };
 		8811FE942648955D00E78864 /* GenreResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreResponseDTO.swift; sourceTree = "<group>"; };
+		8811FE972648B4A500E78864 /* DataWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapper.swift; sourceTree = "<group>"; };
 		885314D724791CCF0054F839 /* games.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = games.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		885314E324791CD50054F839 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		885314E824791CD50054F839 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		8894A17D24832DC20009F8A6 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				8811FE972648B4A500E78864 /* DataWrapper.swift */,
 				8811FE8A264888AD00E78864 /* StoryboardName.swift */,
 				8894A17E24832DD30009F8A6 /* Navigation */,
 			);
@@ -454,6 +457,7 @@
 				88B697612647CA2800E36A1F /* FavouritesVC.swift in Sources */,
 				88961E382647F8D2008FA7ED /* AppConfiguration.swift in Sources */,
 				88B6975B2647B90E00E36A1F /* ContainerBuilder.swift in Sources */,
+				8811FE982648B4A500E78864 /* DataWrapper.swift in Sources */,
 				88961E502648010D008FA7ED /* NetworkResult.swift in Sources */,
 				88961E4D26480004008FA7ED /* NetworkError.swift in Sources */,
 				8894A18224832E760009F8A6 /* MainScene.swift in Sources */,

@@ -17,8 +17,7 @@ final class GameCell: UICollectionViewCell {
     
     var item: GamePresentation! {
         didSet {
-            if let imageUrl = item.imageUrl,
-               let imageData = try? Data(contentsOf: AppConfiguration.shared.cachedThumbnailsURL.appendingPathComponent(imageUrl)),
+            if let imageData = item.imageData?.data,
                let image = UIImage(data: imageData) {
                 imageView.image = image
             } else {

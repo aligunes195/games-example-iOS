@@ -16,7 +16,7 @@ protocol GamesVMProtocol: class {
 }
 
 protocol GamesVMOutputDelegate: class {
-    func reloadData()
+    func reloadData(rows: [Int]?)
 }
 
 protocol GamesNavigationDelegate: class {
