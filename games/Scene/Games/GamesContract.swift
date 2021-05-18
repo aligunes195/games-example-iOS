@@ -10,6 +10,7 @@ import Foundation
 
 protocol GamesVMProtocol: class {
     var delegate: GamesVMOutputDelegate? { get set }
+    var query: String { get set }
     
     func load()
     func loadMore(completion: (() -> Void)?)

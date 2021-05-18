@@ -31,6 +31,10 @@ final class GamePresentation {
         return game.clickedBefore
     }
     
+    var hasImage: Bool {
+        return game.imageUrl != nil
+    }
+    
     var imageData: DataWrapper? {
         return game.imageData
     }

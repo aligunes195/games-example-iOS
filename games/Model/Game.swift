@@ -12,7 +12,7 @@ final class Game {
     let id: Int
     let name: String
     let metacritic: Int?
-    let imageUrl: String
+    let imageUrl: String?
     let genres: [String]
     let clickedBefore: Bool
     

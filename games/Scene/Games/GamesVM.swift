@@ -11,6 +11,15 @@ import Foundation
 final class GamesVM: GamesVMProtocol {
     weak var delegate: GamesVMOutputDelegate?
     
+    var query: String {
+        didSet {
+            if query.count > 3 {
+                initialLoadDone = false
+                self.load(initial: true, page: 1, completion: nil)
+            }
+        }
+    }
+    
     private let networkManager: NetworkManager
     private let imageCacheManager: ImageCacheManager
     
@@ -20,6 +29,7 @@ final class GamesVM: GamesVMProtocol {
     private var items = [Game]()
     
     private var lastPage: UInt32 = 1
+    private var initialLoadDone: Bool = false
     
     init() {
         guard let container = app.container as? MainContainer else {
@@ -27,14 +37,15 @@ final class GamesVM: GamesVMProtocol {
         }
         self.networkManager = container.networkManager
         self.imageCacheManager = container.imageCacheManager
+        self.query = ""
     }
     
     func load() {
-        load(page: 1, completion: nil)
+        load(initial: true, page: 1, completion: nil)
     }
     
     func loadMore(completion: (() -> Void)?) {
-        load(page: lastPage + 1, completion: completion)
+        load(initial: false, page: lastPage + 1, completion: completion)
     }
     
     func numberOfGames() -> Int {
@@ -49,19 +60,29 @@ final class GamesVM: GamesVMProtocol {
         
     }
     
-    private func load(page: UInt32, completion: (() -> Void)?) {
+    private func load(initial: Bool, page: UInt32, completion: (() -> Void)?) {
+        guard initial || initialLoadDone else {
+            completion?()
+            return
+        }
+        
         let dto = SearchRequestDTO(key: AppConfiguration.shared.apiKey,
                                    page_size: UInt32(self.pageSize),
                                    page: page,
-                                   search: nil)
+                                   search: self.query)
         self.networkManager.request(.search(dto: dto)) { [weak self] (result: NetworkResult<SearchListResponseDTO>) in
             guard let self = self else { return }
             switch result {
             case .success(let value):
                 var gamesWithNoncachedImage = [Game]()
                 let newElements: [Game] = value.results.map {
-                    let dataWrapper: DataWrapper? = self.imageCacheManager.getThumbnail(with: $0.background_image)
+                    guard let imageUrl = $0.background_image else {
+                        return Game(dto: $0,
+                                    clickedBefore: false,
+                                    imageData: nil)
+                    }
                     
+                    let dataWrapper: DataWrapper? = self.imageCacheManager.getThumbnail(with: imageUrl)
                     let game = Game(dto: $0,
                                     clickedBefore: false,
                                     imageData: dataWrapper)
@@ -73,7 +94,13 @@ final class GamesVM: GamesVMProtocol {
                 
                 self.fetchNoncachedImages(games: gamesWithNoncachedImage)
                 self.lastPage = page
-                self.items.append(contentsOf: newElements)
+                if initial {
+                    self.items = newElements
+                    self.initialLoadDone = true
+                } else {
+                    self.items.append(contentsOf: newElements)
+                }
+                
                 DispatchQueue.main.async {
                     self.delegate?.insertData(rows: Array((self.items.count - newElements.count)..<self.items.count))
                     completion?()
@@ -89,15 +116,16 @@ final class GamesVM: GamesVMProtocol {
     
     private func fetchNoncachedImages(games: [Game]) {
         games.forEach { game in
-            self.networkManager.requestImageData(urlString: game.imageUrl) { [weak self] result in
+            guard let url = game.imageUrl else { return }
+            self.networkManager.requestImageData(urlString: url) { [weak self] result in
                 guard let self = self else { return }
                 switch result {
                 case .success(let value):
                     guard let compressedImageData = value.compressedImageData() else { return }
                     let dataWrapper = DataWrapper(data: value)
                     let compressedDataWrapper = DataWrapper(data: compressedImageData)
-                    self.imageCacheManager.saveImage(key: game.imageUrl, dataWrapper: dataWrapper)
-                    self.imageCacheManager.saveThumbnail(key: game.imageUrl, dataWrapper: compressedDataWrapper)
+                    self.imageCacheManager.saveImage(key: url, dataWrapper: dataWrapper)
+                    self.imageCacheManager.saveThumbnail(key: url, dataWrapper: compressedDataWrapper)
                     game.imageData = compressedDataWrapper
                     
                     DispatchQueue.main.async {

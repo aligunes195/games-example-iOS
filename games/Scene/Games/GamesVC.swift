@@ -28,9 +28,11 @@ final class GamesVC: UICollectionViewController {
         navigationItem.searchController = searchController
         navigationItem.largeTitleDisplayMode = .always
         
-        title = String.localized("GAMES_TITLE")
+        searchController.searchBar.placeholder = String.localized("SEARCH_FOR_THE_GAMES")
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
         
-        vm.load()
+        title = String.localized("GAMES_TITLE")
     }
 }
 
@@ -70,6 +72,16 @@ extension GamesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = UIScreen.main.bounds.width
         return CGSize(width: screenWidth > 600 ? (screenWidth / 2) - 5 : screenWidth, height: 144)
+    }
+}
+
+extension GamesVC: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        vm.query = ""
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        vm.query = searchText
     }
 }
 

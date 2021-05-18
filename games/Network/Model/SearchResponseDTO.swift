@@ -12,6 +12,6 @@ struct SearchResponseDTO: Decodable {
     let id: Int
     let name: String
     let metacritic: Int?
-    let background_image: String
+    let background_image: String?
     let genres: [GenreResponseDTO]
 }

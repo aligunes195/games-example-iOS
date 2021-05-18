@@ -28,10 +28,14 @@ final class GameCell: UICollectionViewCell {
             self.imageView.image = image
             self.activityIndicator.isHidden = true
             self.activityIndicator.stopAnimating()
-        } else {
+        } else if item.hasImage {
             self.imageView.image = nil
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
+        } else {
+            self.imageView.image = UIImage(named: "placeholder")
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
         }
         nameLabel.text = item.name
         if let metacriticValue = item.metacritic {
