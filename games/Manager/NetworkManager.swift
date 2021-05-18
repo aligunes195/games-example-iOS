@@ -37,20 +37,7 @@ final class NetworkManager {
         
         return Alamofire.Session.default
             .request(url, method: service.method, parameters: parameters, encoding: encoding, headers: service.headers)
-            .response(queue: self.networkQueue) { defaultDataResponse in
-                guard let response = defaultDataResponse.response else {
-                    completion?(.failure(error: .validateResponse))
-                    return
-                }
-                
-                guard 200..<300~=response.statusCode else {
-                    completion?(.failure(error: .statusCode(code: response.statusCode,
-                                                            data: defaultDataResponse.data ?? Data())))
-                    return
-                }
-                
-                completion?(.success(value: defaultDataResponse.data ?? Data()))
-            }
+            .response(queue: self.networkQueue, completionHandler: dataResponseCompletion(completion))
     }
     
     @discardableResult
@@ -67,6 +54,30 @@ final class NetworkManager {
             case .failure(let error):
                 completion?(.failure(error: error))
             }
+        }
+    }
+    
+    @discardableResult
+    func requestImageData(urlString: String, completion: ((NetworkResult<Data>) -> Void)?) -> DataRequest? {
+        return Alamofire.Session.default
+            .request(urlString as URLConvertible)
+            .response(queue: self.networkQueue, completionHandler: dataResponseCompletion(completion))
+    }
+    
+    private func dataResponseCompletion(_ completion: ((NetworkResult<Data>) -> Void)?) -> (AFDataResponse<Data?>) -> Void {
+        return { defaultDataResponse in
+            guard let response = defaultDataResponse.response else {
+                completion?(.failure(error: .validateResponse))
+                return
+            }
+            
+            guard 200..<300~=response.statusCode else {
+                completion?(.failure(error: .statusCode(code: response.statusCode,
+                                                        data: defaultDataResponse.data ?? Data())))
+                return
+            }
+            
+            completion?(.success(value: defaultDataResponse.data ?? Data()))
         }
     }
 }

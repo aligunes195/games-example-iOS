@@ -10,28 +10,43 @@ import UIKit
 
 final class GameCell: UICollectionViewCell {
     
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var metacriticResultLabel: UILabel!
-    @IBOutlet weak var genresLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var nameLabel: UILabel!
+    @IBOutlet private weak var metacriticResultLabel: UILabel!
+    @IBOutlet private weak var genresLabel: UILabel!
     
     var item: GamePresentation! {
         didSet {
-            if let imageData = item.imageData?.data,
-               let image = UIImage(data: imageData) {
-                imageView.image = image
-            } else {
-                imageView.image = nil
-            }
-            nameLabel.text = item.name
-            if let metacriticValue = item.metacritic {
-                metacriticResultLabel.text = String(metacriticValue)
-            } else {
-                metacriticResultLabel.text = ""
-            }
-            genresLabel.text = item.genres.joined(separator: ", ")
-            
-            self.backgroundColor = item.clickedBefore ? .gray : .white
+            setItem()
         }
+    }
+    
+    private func setItem() {
+        if let imageData = item.imageData?.data,
+           let image = UIImage(data: imageData) {
+            self.imageView.image = image
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
+        } else {
+            self.imageView.image = nil
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+        }
+        nameLabel.text = item.name
+        if let metacriticValue = item.metacritic {
+            metacriticResultLabel.text = String(metacriticValue)
+        } else {
+            metacriticResultLabel.text = ""
+        }
+        genresLabel.text = item.genres.joined(separator: ", ")
+        
+        self.backgroundColor = item.clickedBefore ? .gray : .white
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }

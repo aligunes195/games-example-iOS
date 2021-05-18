@@ -8,12 +8,34 @@
 
 import Foundation
 
-struct GamePresentation {
-    let id: Int
-    let name: String
-    let metacritic: Int?
-    let genres: [String]
-    let clickedBefore: Bool
+final class GamePresentation {
+    private let game: Game
     
-    var imageData: DataWrapper?
+    var id: Int {
+        return game.id
+    }
+    
+    var name: String {
+        return game.name
+    }
+    
+    var metacritic: Int? {
+        return game.metacritic
+    }
+    
+    var genres: [String] {
+        return game.genres
+    }
+    
+    var clickedBefore: Bool {
+        return game.clickedBefore
+    }
+    
+    var imageData: DataWrapper? {
+        return game.imageData
+    }
+    
+    init(_ game: Game) {
+        self.game = game
+    }
 }

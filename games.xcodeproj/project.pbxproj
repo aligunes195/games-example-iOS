@@ -43,6 +43,10 @@
 		88961E5926480F08008FA7ED /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5826480F08008FA7ED /* Encodable.swift */; };
 		88961E5D26482034008FA7ED /* SearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5C26482034008FA7ED /* SearchRequestDTO.swift */; };
 		88961E60264836B4008FA7ED /* DetailRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */; };
+		88B01F282651C36E00E84E69 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F272651C36E00E84E69 /* ImageCacheManager.swift */; };
+		88B01F2B2651C6EA00E84E69 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2A2651C6EA00E84E69 /* UIImage.swift */; };
+		88B01F2F26537D8200E84E69 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2E26537D8200E84E69 /* Observable.swift */; };
+		88B01F342653814800E84E69 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F332653814800E84E69 /* Game.swift */; };
 		88B48598249571C8002D8DD8 /* NavigatingRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B48597249571C8002D8DD8 /* NavigatingRouterProtocol.swift */; };
 		88B6974C2647B69D00E36A1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6974B2647B69D00E36A1F /* AppDelegate.swift */; };
 		88B6975B2647B90E00E36A1F /* ContainerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B6975A2647B90E00E36A1F /* ContainerBuilder.swift */; };
@@ -96,6 +100,10 @@
 		88961E5826480F08008FA7ED /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		88961E5C26482034008FA7ED /* SearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestDTO.swift; sourceTree = "<group>"; };
 		88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRequestDTO.swift; sourceTree = "<group>"; };
+		88B01F272651C36E00E84E69 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
+		88B01F2A2651C6EA00E84E69 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		88B01F2E26537D8200E84E69 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		88B01F332653814800E84E69 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		88B48597249571C8002D8DD8 /* NavigatingRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatingRouterProtocol.swift; sourceTree = "<group>"; };
 		88B6974B2647B69D00E36A1F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = games/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		88B6975A2647B90E00E36A1F /* ContainerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerBuilder.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 				8894A17D24832DC20009F8A6 /* Component */,
 				8894A191248336D30009F8A6 /* Extension */,
 				8894A17B248321C00009F8A6 /* Manager */,
+				88B01F322653812F00E84E69 /* Model */,
 				88961E442647FF88008FA7ED /* Network */,
 				8894A16E248313E80009F8A6 /* Resources */,
 				8894A16D248312EF0009F8A6 /* Scene */,
@@ -226,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				88961E3B2647F9D6008FA7ED /* NetworkManager.swift */,
+				88B01F272651C36E00E84E69 /* ImageCacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -242,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				8811FE972648B4A500E78864 /* DataWrapper.swift */,
+				88B01F2E26537D8200E84E69 /* Observable.swift */,
 				8811FE8A264888AD00E78864 /* StoryboardName.swift */,
 				8894A17E24832DD30009F8A6 /* Navigation */,
 			);
@@ -278,6 +289,7 @@
 				88961E5826480F08008FA7ED /* Encodable.swift */,
 				88961E5526480A9F008FA7ED /* Print.swift */,
 				8894A192248336E80009F8A6 /* String.swift */,
+				88B01F2A2651C6EA00E84E69 /* UIImage.swift */,
 				8811FE872648882900E78864 /* UIStoryboard.swift */,
 			);
 			path = Extension;
@@ -310,6 +322,14 @@
 				8811FE8E26488E3400E78864 /* SearchListResponseDTO.swift */,
 				8811FE91264894F500E78864 /* SearchResponseDTO.swift */,
 				8811FE942648955D00E78864 /* GenreResponseDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		88B01F322653812F00E84E69 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				88B01F332653814800E84E69 /* Game.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,7 +381,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = "ali güneş";
 				TargetAttributes = {
 					885314D624791CCF0054F839 = {
@@ -442,8 +462,10 @@
 				88B6974C2647B69D00E36A1F /* AppDelegate.swift in Sources */,
 				8894A1A3248457640009F8A6 /* GamesVM.swift in Sources */,
 				8894A1902483328B0009F8A6 /* GamesVC.swift in Sources */,
+				88B01F2F26537D8200E84E69 /* Observable.swift in Sources */,
 				88B48598249571C8002D8DD8 /* NavigatingRouterProtocol.swift in Sources */,
 				8811FE92264894F500E78864 /* SearchResponseDTO.swift in Sources */,
+				88B01F282651C36E00E84E69 /* ImageCacheManager.swift in Sources */,
 				8894A19F248457410009F8A6 /* GamesBuilder.swift in Sources */,
 				8894A18024832DF90009F8A6 /* MainTabBarController.swift in Sources */,
 				8811FE882648882A00E78864 /* UIStoryboard.swift in Sources */,
@@ -457,6 +479,7 @@
 				88B697612647CA2800E36A1F /* FavouritesVC.swift in Sources */,
 				88961E382647F8D2008FA7ED /* AppConfiguration.swift in Sources */,
 				88B6975B2647B90E00E36A1F /* ContainerBuilder.swift in Sources */,
+				88B01F2B2651C6EA00E84E69 /* UIImage.swift in Sources */,
 				8811FE982648B4A500E78864 /* DataWrapper.swift in Sources */,
 				88961E502648010D008FA7ED /* NetworkResult.swift in Sources */,
 				88961E4D26480004008FA7ED /* NetworkError.swift in Sources */,
@@ -469,6 +492,7 @@
 				88961E5D26482034008FA7ED /* SearchRequestDTO.swift in Sources */,
 				8894A1762483199E0009F8A6 /* MainRouter.swift in Sources */,
 				8894A170248314A40009F8A6 /* App.swift in Sources */,
+				88B01F342653814800E84E69 /* Game.swift in Sources */,
 				88961E5326480220008FA7ED /* Data.swift in Sources */,
 				88B6976C2647D9E200E36A1F /* FavouritesBuilder.swift in Sources */,
 			);
@@ -541,7 +565,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -597,7 +621,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -635,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = games/games.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = CX3V6YWNLY;
+				DEVELOPMENT_TEAM = WMN8F8AVXV;
 				INFOPLIST_FILE = games/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

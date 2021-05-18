@@ -10,9 +10,11 @@ import Foundation
 
 final class MainContainer: ContainerProtocol {
     let networkManager: NetworkManager
+    let imageCacheManager: ImageCacheManager
     
     init() {
         self.networkManager = NetworkManager()
+        self.imageCacheManager = ImageCacheManager()
     }
     
     func load() {}

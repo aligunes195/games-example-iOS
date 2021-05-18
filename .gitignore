@@ -27,8 +27,4 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 iOSInjectionProject/
 *.xcworkspacedata
-Ulak.xcodeproj/xcuserdata
-Ulak.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-Ulak.xcodeproj/xcuserdata
-
 .DS_Store

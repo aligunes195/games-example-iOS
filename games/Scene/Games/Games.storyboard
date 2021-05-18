@@ -31,7 +31,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="144"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4k-ad-6Di">
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="oCI-t9-6bh">
+                                            <rect key="frame" x="16" y="12" width="120" height="120"/>
+                                            <color key="backgroundColor" systemColor="placeholderTextColor"/>
+                                        </activityIndicatorView>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="x4k-ad-6Di">
                                             <rect key="frame" x="16" y="12" width="120" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="x4k-ad-6Di" secondAttribute="height" id="1DJ-ok-fju"/>
@@ -66,10 +70,14 @@
                                         <constraint firstAttribute="bottom" secondItem="x4k-ad-6Di" secondAttribute="bottom" constant="12" id="G2t-vi-3Bu"/>
                                         <constraint firstItem="x4k-ad-6Di" firstAttribute="top" secondItem="cb8-pU-nUF" secondAttribute="top" constant="12" id="HT5-xz-B4b"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fht-qR-gq6" secondAttribute="trailing" constant="16" id="HTF-jH-CQu"/>
+                                        <constraint firstItem="oCI-t9-6bh" firstAttribute="bottom" secondItem="x4k-ad-6Di" secondAttribute="bottom" id="KEH-sx-wIM"/>
+                                        <constraint firstItem="oCI-t9-6bh" firstAttribute="trailing" secondItem="x4k-ad-6Di" secondAttribute="trailing" id="PYd-bJ-lgs"/>
                                         <constraint firstItem="oNX-q2-9SB" firstAttribute="top" secondItem="YkI-wW-LRL" secondAttribute="bottom" constant="5" id="Q3Q-ld-0Dx"/>
                                         <constraint firstItem="Poe-CC-NIC" firstAttribute="bottom" secondItem="YkI-wW-LRL" secondAttribute="bottom" id="VaB-uC-dvP"/>
+                                        <constraint firstItem="oCI-t9-6bh" firstAttribute="leading" secondItem="x4k-ad-6Di" secondAttribute="leading" id="ce2-si-JAE"/>
                                         <constraint firstItem="Poe-CC-NIC" firstAttribute="leading" secondItem="YkI-wW-LRL" secondAttribute="trailing" constant="5" id="ge2-Mf-zzX"/>
                                         <constraint firstItem="YkI-wW-LRL" firstAttribute="leading" secondItem="x4k-ad-6Di" secondAttribute="trailing" constant="16" id="gjQ-Ke-id0"/>
+                                        <constraint firstItem="oCI-t9-6bh" firstAttribute="top" secondItem="x4k-ad-6Di" secondAttribute="top" id="gjw-w8-NvX"/>
                                         <constraint firstItem="x4k-ad-6Di" firstAttribute="leading" secondItem="cb8-pU-nUF" secondAttribute="leading" constant="16" id="kYV-Wg-uSX"/>
                                         <constraint firstItem="fht-qR-gq6" firstAttribute="leading" secondItem="x4k-ad-6Di" secondAttribute="trailing" constant="16" id="niu-MT-Xy6"/>
                                         <constraint firstItem="oNX-q2-9SB" firstAttribute="leading" secondItem="x4k-ad-6Di" secondAttribute="trailing" constant="16" id="oVd-qr-duu"/>
@@ -80,6 +88,7 @@
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="414" height="144"/>
                                 <connections>
+                                    <outlet property="activityIndicator" destination="oCI-t9-6bh" id="RAH-c6-gg5"/>
                                     <outlet property="genresLabel" destination="oNX-q2-9SB" id="19q-GW-EYK"/>
                                     <outlet property="imageView" destination="x4k-ad-6Di" id="twO-uJ-KPM"/>
                                     <outlet property="metacriticResultLabel" destination="Poe-CC-NIC" id="fI7-fY-QXU"/>
@@ -99,6 +108,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

@@ -10,13 +10,19 @@ import Foundation
 
 protocol GamesVMProtocol: class {
     var delegate: GamesVMOutputDelegate? { get set }
-    var items: [GamePresentation] { get }
     
     func load()
+    func loadMore(completion: (() -> Void)?)
+    
+    func numberOfGames() -> Int
+    func getGame(at indexPath: IndexPath) -> GamePresentation
+    func selectGame(at indexPath: IndexPath)
 }
 
 protocol GamesVMOutputDelegate: class {
+    func isVisible(id: Int) -> Bool
     func reloadData(rows: [Int]?)
+    func insertData(rows: [Int])
 }
 
 protocol GamesNavigationDelegate: class {
