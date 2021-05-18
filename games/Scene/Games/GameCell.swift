@@ -45,7 +45,7 @@ final class GameCell: UICollectionViewCell {
         }
         genresLabel.text = item.genres.joined(separator: ", ")
         
-        self.backgroundColor = item.clickedBefore ? .gray : .white
+        self.backgroundColor = item.clickedBefore ? .init(white: 0.9, alpha: 1) : .white
     }
     
     override func prepareForReuse() {

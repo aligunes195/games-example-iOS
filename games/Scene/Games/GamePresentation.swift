@@ -11,6 +11,8 @@ import Foundation
 final class GamePresentation {
     private let game: Game
     
+    let clickedBefore: Bool
+    
     var id: Int {
         return game.id
     }
@@ -27,10 +29,6 @@ final class GamePresentation {
         return game.genres
     }
     
-    var clickedBefore: Bool {
-        return game.clickedBefore
-    }
-    
     var hasImage: Bool {
         return game.imageUrl != nil
     }
@@ -39,7 +37,9 @@ final class GamePresentation {
         return game.imageData
     }
     
-    init(_ game: Game) {
+    init(_ game: Game,
+         clickedBefore: Bool) {
         self.game = game
+        self.clickedBefore = clickedBefore
     }
 }

@@ -25,6 +25,7 @@ final class GamesVM: GamesVMProtocol {
     
     private let pageSize = 50
     private let maxPageCount = 4
+    private let gamesClickedBeforeCache = NSCache<NSString, Game>()
     
     private var items = [Game]()
     
@@ -53,11 +54,15 @@ final class GamesVM: GamesVMProtocol {
     }
     
     func getGame(at indexPath: IndexPath) -> GamePresentation {
-        return GamePresentation(items[indexPath.row])
+        let game = items[indexPath.row]
+        let clickedBefore = gamesClickedBeforeCache.object(forKey: "\(game.id)" as NSString) != nil
+        
+        return GamePresentation(items[indexPath.row], clickedBefore: clickedBefore)
     }
     
     func selectGame(at indexPath: IndexPath) {
-        
+        let game = items[indexPath.row]
+        gamesClickedBeforeCache.setObject(game, forKey: "\(game.id)" as NSString)
     }
     
     private func load(initial: Bool, page: UInt32, completion: (() -> Void)?) {
@@ -78,13 +83,11 @@ final class GamesVM: GamesVMProtocol {
                 let newElements: [Game] = value.results.map {
                     guard let imageUrl = $0.background_image else {
                         return Game(dto: $0,
-                                    clickedBefore: false,
                                     imageData: nil)
                     }
                     
                     let dataWrapper: DataWrapper? = self.imageCacheManager.getThumbnail(with: imageUrl)
                     let game = Game(dto: $0,
-                                    clickedBefore: false,
                                     imageData: dataWrapper)
                     if dataWrapper == nil {
                         gamesWithNoncachedImage.append(game)

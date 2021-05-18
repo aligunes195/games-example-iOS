@@ -48,7 +48,12 @@ extension GamesVC {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        vm.selectGame(at: indexPath)
         routerDelegate?.showDetail(with: vm.getGame(at: indexPath).id)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
