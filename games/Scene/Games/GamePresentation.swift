@@ -34,7 +34,7 @@ final class GamePresentation {
     }
     
     var imageData: DataWrapper? {
-        return game.imageData
+        return game.thumbnailData
     }
     
     init(_ game: Game,

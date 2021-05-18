@@ -82,13 +82,12 @@ final class GamesVM: GamesVMProtocol {
                 var gamesWithNoncachedImage = [Game]()
                 let newElements: [Game] = value.results.map {
                     guard let imageUrl = $0.background_image else {
-                        return Game(dto: $0,
-                                    imageData: nil)
+                        return Game(dto: $0)
                     }
                     
                     let dataWrapper: DataWrapper? = self.imageCacheManager.getThumbnail(with: imageUrl)
                     let game = Game(dto: $0,
-                                    imageData: dataWrapper)
+                                    thumbnailData: dataWrapper)
                     if dataWrapper == nil {
                         gamesWithNoncachedImage.append(game)
                     }
@@ -129,7 +128,7 @@ final class GamesVM: GamesVMProtocol {
                     let compressedDataWrapper = DataWrapper(data: compressedImageData)
                     self.imageCacheManager.saveImage(key: url, dataWrapper: dataWrapper)
                     self.imageCacheManager.saveThumbnail(key: url, dataWrapper: compressedDataWrapper)
-                    game.imageData = compressedDataWrapper
+                    game.thumbnailData = compressedDataWrapper
                     
                     DispatchQueue.main.async {
                         guard let delegate = self.delegate,

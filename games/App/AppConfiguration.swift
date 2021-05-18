@@ -30,16 +30,16 @@ final class AppConfiguration {
         return url
     }
     
-    var cachedImagesURL: URL {
-        let url = appGroupContainerURL.appendingPathComponent("cachedImages")
+    var imagesURL: URL {
+        let url = appGroupContainerURL.appendingPathComponent("images")
         
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         
         return url
     }
     
-    var cachedThumbnailsURL: URL {
-        let url = appGroupContainerURL.appendingPathComponent("cachedThumbnails")
+    var thumbnailsURL: URL {
+        let url = appGroupContainerURL.appendingPathComponent("thumbnails")
         
         try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         

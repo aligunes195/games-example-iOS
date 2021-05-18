@@ -43,6 +43,8 @@
 		88961E5926480F08008FA7ED /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5826480F08008FA7ED /* Encodable.swift */; };
 		88961E5D26482034008FA7ED /* SearchRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5C26482034008FA7ED /* SearchRequestDTO.swift */; };
 		88961E60264836B4008FA7ED /* DetailRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */; };
+		8898EDBC26547AE900EF97E5 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDBB26547AE900EF97E5 /* GameDetail.swift */; };
+		8898EDBF26547C5200EF97E5 /* DetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDBE26547C5200EF97E5 /* DetailResponseDTO.swift */; };
 		88B01F282651C36E00E84E69 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F272651C36E00E84E69 /* ImageCacheManager.swift */; };
 		88B01F2B2651C6EA00E84E69 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2A2651C6EA00E84E69 /* UIImage.swift */; };
 		88B01F2F26537D8200E84E69 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2E26537D8200E84E69 /* Observable.swift */; };
@@ -100,6 +102,8 @@
 		88961E5826480F08008FA7ED /* Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		88961E5C26482034008FA7ED /* SearchRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRequestDTO.swift; sourceTree = "<group>"; };
 		88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRequestDTO.swift; sourceTree = "<group>"; };
+		8898EDBB26547AE900EF97E5 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
+		8898EDBE26547C5200EF97E5 /* DetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponseDTO.swift; sourceTree = "<group>"; };
 		88B01F272651C36E00E84E69 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		88B01F2A2651C6EA00E84E69 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		88B01F2E26537D8200E84E69 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -317,11 +321,12 @@
 		88961E462647FFAD008FA7ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				88961E5C26482034008FA7ED /* SearchRequestDTO.swift */,
 				88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */,
-				8811FE8E26488E3400E78864 /* SearchListResponseDTO.swift */,
-				8811FE91264894F500E78864 /* SearchResponseDTO.swift */,
+				8898EDBE26547C5200EF97E5 /* DetailResponseDTO.swift */,
 				8811FE942648955D00E78864 /* GenreResponseDTO.swift */,
+				8811FE8E26488E3400E78864 /* SearchListResponseDTO.swift */,
+				88961E5C26482034008FA7ED /* SearchRequestDTO.swift */,
+				8811FE91264894F500E78864 /* SearchResponseDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			isa = PBXGroup;
 			children = (
 				88B01F332653814800E84E69 /* Game.swift */,
+				8898EDBB26547AE900EF97E5 /* GameDetail.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -472,6 +478,8 @@
 				88B697732647DAEF00E36A1F /* FavouritesContract.swift in Sources */,
 				8894A186248331120009F8A6 /* GamesRouter.swift in Sources */,
 				8894A184248330F80009F8A6 /* FavouritesRouter.swift in Sources */,
+				8898EDBC26547AE900EF97E5 /* GameDetail.swift in Sources */,
+				8898EDBF26547C5200EF97E5 /* DetailResponseDTO.swift in Sources */,
 				8811FE8B264888AD00E78864 /* StoryboardName.swift in Sources */,
 				8894A193248336E80009F8A6 /* String.swift in Sources */,
 				8894A1A5248C2F8F0009F8A6 /* ContainerProtocol.swift in Sources */,

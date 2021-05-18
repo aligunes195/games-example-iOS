@@ -15,10 +15,14 @@ final class Game {
     let imageUrl: String?
     let genres: [String]
     
+    var detail: GameDetail?
+    var thumbnailData: DataWrapper?
     var imageData: DataWrapper?
     
     init(dto: SearchResponseDTO,
-         imageData: DataWrapper?) {
+         detail: GameDetail? = nil,
+         thumbnailData: DataWrapper? = nil,
+         imageData: DataWrapper? = nil) {
         self.id = dto.id
         self.name = dto.name
         self.metacritic = dto.metacritic
