@@ -19,15 +19,21 @@ final class Game {
     var thumbnailData: DataWrapper?
     var imageData: DataWrapper?
     
-    init(dto: SearchResponseDTO,
+    init(id: Int,
+         name: String,
+         metacritic: Int?,
+         imageUrl: String?,
+         genres: [String],
          detail: GameDetail? = nil,
          thumbnailData: DataWrapper? = nil,
          imageData: DataWrapper? = nil) {
-        self.id = dto.id
-        self.name = dto.name
-        self.metacritic = dto.metacritic
-        self.imageUrl = dto.background_image
-        self.genres = dto.genres.map { $0.name }
+        self.id = id
+        self.name = name
+        self.metacritic = metacritic
+        self.imageUrl = imageUrl
+        self.genres = genres
+        self.detail = detail
+        self.thumbnailData = thumbnailData
         self.imageData = imageData
     }
 }

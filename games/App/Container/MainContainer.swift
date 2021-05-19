@@ -10,10 +10,12 @@ import Foundation
 
 final class MainContainer: ContainerProtocol {
     let networkManager: NetworkManager
+    let storageManager: StorageManager
     let imageCacheManager: ImageCacheManager
     
     init() {
         self.networkManager = NetworkManager()
+        self.storageManager = StorageManager()
         self.imageCacheManager = ImageCacheManager()
     }
     

@@ -45,6 +45,10 @@
 		88961E60264836B4008FA7ED /* DetailRequestDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */; };
 		8898EDBC26547AE900EF97E5 /* GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDBB26547AE900EF97E5 /* GameDetail.swift */; };
 		8898EDBF26547C5200EF97E5 /* DetailResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDBE26547C5200EF97E5 /* DetailResponseDTO.swift */; };
+		8898EDC42654881000EF97E5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDC32654881000EF97E5 /* StorageManager.swift */; };
+		8898EDCB265490E900EF97E5 /* FavouriteStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDCA265490E900EF97E5 /* FavouriteStorageProvider.swift */; };
+		8898EDCE2654911900EF97E5 /* FavouriteStorageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDCD2654911800EF97E5 /* FavouriteStorageModel.swift */; };
+		8898EDD2265492EF00EF97E5 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8898EDD1265492EF00EF97E5 /* StorageProvider.swift */; };
 		88B01F282651C36E00E84E69 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F272651C36E00E84E69 /* ImageCacheManager.swift */; };
 		88B01F2B2651C6EA00E84E69 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2A2651C6EA00E84E69 /* UIImage.swift */; };
 		88B01F2F26537D8200E84E69 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2E26537D8200E84E69 /* Observable.swift */; };
@@ -104,6 +108,10 @@
 		88961E5F264836B4008FA7ED /* DetailRequestDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRequestDTO.swift; sourceTree = "<group>"; };
 		8898EDBB26547AE900EF97E5 /* GameDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetail.swift; sourceTree = "<group>"; };
 		8898EDBE26547C5200EF97E5 /* DetailResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailResponseDTO.swift; sourceTree = "<group>"; };
+		8898EDC32654881000EF97E5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		8898EDCA265490E900EF97E5 /* FavouriteStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteStorageProvider.swift; sourceTree = "<group>"; };
+		8898EDCD2654911800EF97E5 /* FavouriteStorageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteStorageModel.swift; sourceTree = "<group>"; };
+		8898EDD1265492EF00EF97E5 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		88B01F272651C36E00E84E69 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		88B01F2A2651C6EA00E84E69 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		88B01F2E26537D8200E84E69 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 				88961E442647FF88008FA7ED /* Network */,
 				8894A16E248313E80009F8A6 /* Resources */,
 				8894A16D248312EF0009F8A6 /* Scene */,
+				8898EDC2265487DB00EF97E5 /* Storage */,
 			);
 			path = games;
 			sourceTree = "<group>";
@@ -238,8 +247,9 @@
 		8894A17B248321C00009F8A6 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				88961E3B2647F9D6008FA7ED /* NetworkManager.swift */,
 				88B01F272651C36E00E84E69 /* ImageCacheManager.swift */,
+				88961E3B2647F9D6008FA7ED /* NetworkManager.swift */,
+				8898EDC32654881000EF97E5 /* StorageManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -329,6 +339,40 @@
 				8811FE91264894F500E78864 /* SearchResponseDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8898EDC2265487DB00EF97E5 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8898EDD0265492D700EF97E5 /* Base */,
+				8898EDC926548E0300EF97E5 /* Model */,
+				8898EDC826548DFB00EF97E5 /* Provider */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		8898EDC826548DFB00EF97E5 /* Provider */ = {
+			isa = PBXGroup;
+			children = (
+				8898EDCA265490E900EF97E5 /* FavouriteStorageProvider.swift */,
+			);
+			path = Provider;
+			sourceTree = "<group>";
+		};
+		8898EDC926548E0300EF97E5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8898EDCD2654911800EF97E5 /* FavouriteStorageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8898EDD0265492D700EF97E5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8898EDD1265492EF00EF97E5 /* StorageProvider.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		88B01F322653812F00E84E69 /* Model */ = {
@@ -459,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88961E3C2647F9D6008FA7ED /* NetworkManager.swift in Sources */,
+				8898EDCE2654911900EF97E5 /* FavouriteStorageModel.swift in Sources */,
 				88B697702647DADF00E36A1F /* FavouritesVM.swift in Sources */,
 				8811FE952648955D00E78864 /* GenreResponseDTO.swift in Sources */,
 				8894A173248318ED0009F8A6 /* RouterProtocol.swift in Sources */,
@@ -478,6 +523,7 @@
 				88B697732647DAEF00E36A1F /* FavouritesContract.swift in Sources */,
 				8894A186248331120009F8A6 /* GamesRouter.swift in Sources */,
 				8894A184248330F80009F8A6 /* FavouritesRouter.swift in Sources */,
+				8898EDCB265490E900EF97E5 /* FavouriteStorageProvider.swift in Sources */,
 				8898EDBC26547AE900EF97E5 /* GameDetail.swift in Sources */,
 				8898EDBF26547C5200EF97E5 /* DetailResponseDTO.swift in Sources */,
 				8811FE8B264888AD00E78864 /* StoryboardName.swift in Sources */,
@@ -503,6 +549,8 @@
 				88B01F342653814800E84E69 /* Game.swift in Sources */,
 				88961E5326480220008FA7ED /* Data.swift in Sources */,
 				88B6976C2647D9E200E36A1F /* FavouritesBuilder.swift in Sources */,
+				8898EDC42654881000EF97E5 /* StorageManager.swift in Sources */,
+				8898EDD2265492EF00EF97E5 /* StorageProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,8 +23,12 @@ final class AppConfiguration {
         return id
     }
     
+    var appGroupIdentifier: String {
+        return "group.com.alig.games"
+    }
+    
     var appGroupContainerURL: URL {
-        guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.com.alig.games") else {
+        guard let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupIdentifier) else {
             fatalError("App Group Container URL not found")
         }
         return url

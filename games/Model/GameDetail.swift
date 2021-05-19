@@ -14,10 +14,13 @@ final class GameDetail {
     let redditUrl: String?
     let websiteUrl: String?
     
-    init(dto: DetailResponseDTO) {
-        self.id = dto.id
-        self.description = dto.description_raw ?? ""
-        self.websiteUrl = dto.website
-        self.redditUrl = dto.reddit_url
+    init(id: Int,
+         description: String,
+         redditUrl: String?,
+         websiteUrl: String?) {
+        self.id = id
+        self.description = description
+        self.websiteUrl = websiteUrl
+        self.redditUrl = redditUrl
     }
 }

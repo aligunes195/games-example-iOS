@@ -81,14 +81,23 @@ final class GamesVM: GamesVMProtocol {
             case .success(let value):
                 var gamesWithNoncachedImage = [Game]()
                 let newElements: [Game] = value.results.map {
-                    guard let imageUrl = $0.background_image else {
-                        return Game(dto: $0)
+                    let dataWrapper: DataWrapper?
+                    let hasImage: Bool
+                    if let imageUrl = $0.background_image {
+                        dataWrapper = self.imageCacheManager.getThumbnail(with: imageUrl)
+                        hasImage = true
+                    } else {
+                        dataWrapper = nil
+                        hasImage = false
                     }
                     
-                    let dataWrapper: DataWrapper? = self.imageCacheManager.getThumbnail(with: imageUrl)
-                    let game = Game(dto: $0,
+                    let game = Game(id: $0.id,
+                                    name: $0.name,
+                                    metacritic: $0.metacritic,
+                                    imageUrl: $0.background_image,
+                                    genres: $0.genres.map { $0.name },
                                     thumbnailData: dataWrapper)
-                    if dataWrapper == nil {
+                    if hasImage, dataWrapper == nil {
                         gamesWithNoncachedImage.append(game)
                     }
                     return game
