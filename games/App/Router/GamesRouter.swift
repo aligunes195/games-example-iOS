@@ -29,7 +29,8 @@ final class GamesRouter: NavigatingRouterProtocol {
 }
 
 extension GamesRouter: GamesNavigationDelegate {
-    func showDetail(with id: Int) {
-        
+    func showDetail(with game: Game) {
+        let vc = GameDetailBuilder.build(game: game)
+        navController.pushViewController(vc, animated: true)
     }
 }

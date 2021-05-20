@@ -53,7 +53,7 @@ final class GamesVM: GamesVMProtocol {
         return items.count
     }
     
-    func getGame(at indexPath: IndexPath) -> GamePresentation {
+    func getGamePresentation(at indexPath: IndexPath) -> GamePresentation {
         let game = items[indexPath.row]
         let clickedBefore = gamesClickedBeforeCache.object(forKey: "\(game.id)" as NSString) != nil
         
@@ -63,6 +63,10 @@ final class GamesVM: GamesVMProtocol {
     func selectGame(at indexPath: IndexPath) {
         let game = items[indexPath.row]
         gamesClickedBeforeCache.setObject(game, forKey: "\(game.id)" as NSString)
+    }
+    
+    func getGame(at indexPath: IndexPath) -> Game {
+        return items[indexPath.row]
     }
     
     private func load(initial: Bool, page: UInt32, completion: (() -> Void)?) {

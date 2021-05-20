@@ -34,6 +34,12 @@ final class GamesVC: UICollectionViewController {
         
         title = String.localized("GAMES_TITLE")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
 }
 
 extension GamesVC {
@@ -43,13 +49,13 @@ extension GamesVC {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! GameCell
-        cell.item = vm.getGame(at: indexPath)
+        cell.item = vm.getGamePresentation(at: indexPath)
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         vm.selectGame(at: indexPath)
-        routerDelegate?.showDetail(with: vm.getGame(at: indexPath).id)
+        routerDelegate?.showDetail(with: vm.getGame(at: indexPath))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

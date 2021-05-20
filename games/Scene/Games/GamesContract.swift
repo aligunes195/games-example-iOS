@@ -16,8 +16,9 @@ protocol GamesVMProtocol: class {
     func loadMore(completion: (() -> Void)?)
     
     func numberOfGames() -> Int
-    func getGame(at indexPath: IndexPath) -> GamePresentation
+    func getGamePresentation(at indexPath: IndexPath) -> GamePresentation
     func selectGame(at indexPath: IndexPath)
+    func getGame(at indexPath: IndexPath) -> Game
 }
 
 protocol GamesVMOutputDelegate: class {
@@ -27,5 +28,5 @@ protocol GamesVMOutputDelegate: class {
 }
 
 protocol GamesNavigationDelegate: class {
-    func showDetail(with id: Int)
+    func showDetail(with game: Game)
 }
