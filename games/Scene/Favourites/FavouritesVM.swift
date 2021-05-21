@@ -25,10 +25,10 @@ final class FavouritesVM: FavouritesVMProtocol {
     func load() {
         do {
             items = try favouriteStorageService.getAllFavourites()
+            delegate?.reloadData(rows: nil)
         } catch {
             printError(error)
         }
-        delegate?.reloadData(rows: nil)
     }
     
     func numberOfFavourites() -> Int {
@@ -41,5 +41,15 @@ final class FavouritesVM: FavouritesVMProtocol {
     
     func getGame(at indexPath: IndexPath) -> Game {
         return items[indexPath.row]
+    }
+    
+    func deleteFavourite(at indexPath: IndexPath) {
+        do {
+            try favouriteStorageService.removeFromFavourites(items[indexPath.row].id)
+            items.remove(at: indexPath.row)
+            delegate?.deleteData(rows: [indexPath.row])
+        } catch {
+            printError(error)
+        }
     }
 }

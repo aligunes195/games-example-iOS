@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class FavouritesVC: UICollectionViewController {
+final class FavouritesVC: UITableViewController {
     var vm: FavouritesVMProtocol! {
         didSet {
             vm.delegate = self
@@ -37,28 +37,36 @@ final class FavouritesVC: UICollectionViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .always
         
-        title = String.localized("FAVOURITES_TITLE_NUMBER", "3")
+        tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         vm.load()
+        updateTitle()
+    }
+    
+    private func updateTitle() {
+        let count = vm.numberOfFavourites()
+        title = count > 0
+            ? String.localized("FAVOURITES_TITLE_NUMBER", "\(vm.numberOfFavourites())")
+            : String.localized("FAVOURITES_TITLE")
     }
     
     private func addEmptyViewConstraints() {
         NSLayoutConstraint.activate([
-            self.emptyView.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 100),
-            self.emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)
+            self.emptyView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 100),
+            self.emptyView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         ])
     }
 }
 
 extension FavouritesVC {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let count = vm.numberOfFavourites()
         if count == 0 {
-            self.collectionView.addSubview(self.emptyView)
+            self.tableView.addSubview(self.emptyView)
             addEmptyViewConstraints()
         } else {
             self.emptyView.removeFromSuperview()
@@ -66,38 +74,40 @@ extension FavouritesVC {
         return count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as! FavouriteCell
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 144
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! FavouriteCell
         cell.item = vm.getFavouritePresentation(at: indexPath)
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         routerDelegate?.showDetail(with: vm.getGame(at: indexPath))
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
-extension FavouritesVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = UIScreen.main.bounds.width
-        return CGSize(width: screenWidth > 600 ? (screenWidth / 2) - 5 : screenWidth, height: 144)
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: String.localized("DELETE_FAVOURITE")) { (action, indexPath) in
+            self.vm.deleteFavourite(at: indexPath)
+        }
+        return [deleteAction]
     }
 }
 
 extension FavouritesVC: FavouritesVMOutputDelegate {
     func reloadData(rows: [Int]?) {
+        defer { updateTitle() }
         guard let rows = rows else {
-            collectionView.reloadData()
+            tableView.reloadData()
             return
         }
-        collectionView.reloadItems(at: rows.map { IndexPath(row: $0, section: 0) })
+        tableView.reloadRows(at: rows.map { IndexPath(row: $0, section: 0) }, with: .none)
     }
     
     func deleteData(rows: [Int]) {
-        collectionView.deleteItems(at: rows.map { IndexPath(row: $0, section: 0) })
+        tableView.deleteRows(at: rows.map { IndexPath(row: $0, section: 0) }, with: .automatic)
+        updateTitle()
     }
 }

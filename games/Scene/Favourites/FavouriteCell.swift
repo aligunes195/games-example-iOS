@@ -8,10 +8,9 @@
 
 import UIKit
 
-final class FavouriteCell: UICollectionViewCell {
+final class FavouriteCell: UITableViewCell {
     
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var gameImageView: UIImageView!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var metacriticResultLabel: UILabel!
     @IBOutlet private weak var genresLabel: UILabel!
@@ -25,17 +24,9 @@ final class FavouriteCell: UICollectionViewCell {
     private func setItem() {
         if let imageData = item.imageData?.data,
            let image = UIImage(data: imageData) {
-            self.imageView.image = image
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-        } else if item.hasImage {
-            self.imageView.image = nil
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
+            self.gameImageView.image = image
         } else {
-            self.imageView.image = UIImage(named: "placeholder")
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
+            self.gameImageView.image = UIImage(named: "placeholder")
         }
         nameLabel.text = item.name
         if let metacriticValue = item.metacritic {
@@ -44,11 +35,5 @@ final class FavouriteCell: UICollectionViewCell {
             metacriticResultLabel.text = ""
         }
         genresLabel.text = item.genres.joined(separator: ", ")
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.activityIndicator.isHidden = true
-        self.activityIndicator.stopAnimating()
     }
 }

@@ -70,7 +70,7 @@ final class GameDetailVC: UIViewController {
     }
     
     private func setItem() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: item.isFavourite ? "Favourited" : "Favourite",
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: String.localized(item.isFavourite ? "FAVOURITED" : "FAVOURITE"),
                                                                  style: .plain,
                                                                  target: self,
                                                                  action: #selector(favouriteButtonClicked))

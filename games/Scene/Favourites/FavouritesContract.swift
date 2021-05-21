@@ -16,6 +16,7 @@ protocol FavouritesVMProtocol: class {
     func numberOfFavourites() -> Int
     func getFavouritePresentation(at indexPath: IndexPath) -> FavouritePresentation
     func getGame(at indexPath: IndexPath) -> Game
+    func deleteFavourite(at indexPath: IndexPath)
 }
 
 protocol FavouritesVMOutputDelegate: class {
