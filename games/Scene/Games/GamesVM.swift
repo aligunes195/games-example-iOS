@@ -14,8 +14,12 @@ final class GamesVM: GamesVMProtocol {
     var query: String {
         didSet {
             if query.count > 3 {
-                initialLoadDone = false
-                self.load(initial: true, page: 1, completion: nil)
+                let oldQuery = query
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    guard oldQuery == self.query else { return }
+                    self.initialLoadDone = false
+                    self.load(initial: true, page: 1, completion: nil)
+                }
             }
         }
     }
@@ -117,7 +121,11 @@ final class GamesVM: GamesVMProtocol {
                 }
                 
                 DispatchQueue.main.async {
-                    self.delegate?.insertData(rows: Array((self.items.count - newElements.count)..<self.items.count))
+                    if initial {
+                        self.delegate?.reloadData(rows: nil)
+                    } else {
+                        self.delegate?.insertData(rows: Array((self.items.count - newElements.count)..<self.items.count))
+                    }
                     completion?()
                 }
             case .failure(let error):
