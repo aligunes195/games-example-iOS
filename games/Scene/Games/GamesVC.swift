@@ -20,6 +20,12 @@ final class GamesVC: UICollectionViewController {
     private let cellReuseIdentifier = "GameCell"
     
     private lazy var searchController = UISearchController(searchResultsController: nil)
+    private lazy var emptyView: UILabel = {
+        let label = UILabel()
+        label.text = String.localized("NO_GAMES_FOUND")
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
     
     private var loadingNextPage = false
     
@@ -40,11 +46,25 @@ final class GamesVC: UICollectionViewController {
         self.tabBarController?.tabBar.isHidden = false
         collectionView.reloadData()
     }
+    
+    private func addEmptyViewConstraints() {
+        NSLayoutConstraint.activate([
+            self.emptyView.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 100),
+            self.emptyView.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor)
+        ])
+    }
 }
 
 extension GamesVC {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vm.numberOfGames()
+        let count = vm.numberOfGames()
+        if count == 0 {
+            self.collectionView.addSubview(self.emptyView)
+            addEmptyViewConstraints()
+        } else {
+            self.emptyView.removeFromSuperview()
+        }
+        return count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

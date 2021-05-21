@@ -13,3 +13,5 @@
 "GAME_DESCRIPTION" = "Game Description";
 "VISIT_REDDIT" = "Visit Reddit";
 "VISIT_WEBSITE" = "Visit Website";
+"NO_GAMES_FOUND" = "No games have been searched.";
+"NO_FAVOURITES_FOUND" = "There is no favourites found.";

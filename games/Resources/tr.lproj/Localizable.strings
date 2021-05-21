@@ -13,3 +13,5 @@
 "GAME_DESCRIPTION" = "Oyun Açıklaması";
 "VISIT_REDDIT" = "Reddit'i ziyaret et";
 "VISIT_WEBSITE" = "Websitesini ziyaret et";
+"NO_GAMES_FOUND" = "Oyun aranmadı.";
+"NO_FAVOURITES_FOUND" = "Favorileriniz boş.";
