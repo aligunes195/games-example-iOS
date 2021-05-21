@@ -35,6 +35,11 @@ final class FavouriteStorageService: StorageService {
     }
     
     func removeFromFavourites(_ id: Int) throws {
+        guard let allIdsData = self.storageManager.load(allKey) else {
+            return
+        }
+        let allIds = (try allIdsData.toJSONObject([Int].self)).filter { $0 != id }
+        
         let thumbnailUrl = AppConfiguration.shared.thumbnailsURL.appendingPathComponent("\(id)")
         if FileManager.default.fileExists(atPath: thumbnailUrl.path) {
             try FileManager.default.removeItem(at: thumbnailUrl)
@@ -43,6 +48,7 @@ final class FavouriteStorageService: StorageService {
         if FileManager.default.fileExists(atPath: imageUrl.path) {
             try FileManager.default.removeItem(at: imageUrl)
         }
+        self.storageManager.save(allKey, value: try allIds.toJSONData())
         self.storageManager.remove(key(with: id))
     }
     
