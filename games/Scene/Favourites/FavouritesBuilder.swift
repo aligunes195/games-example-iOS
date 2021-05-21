@@ -6,11 +6,11 @@
 //  Copyright © 2021 ali güneş. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class FavouritesBuilder {
     static func build() -> FavouritesVC {
-        let vc = FavouritesVC()
+        let vc = UIStoryboard.load(.favourites) as! FavouritesVC
         vc.vm = FavouritesVM()
         return vc
     }

@@ -54,6 +54,9 @@
 		88AEA22F26571AAE00E83B8B /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEA22E26571AAE00E83B8B /* UILabel.swift */; };
 		88AEA23E2657407B00E83B8B /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEA23D2657407B00E83B8B /* StorageService.swift */; };
 		88AEA2422657408900E83B8B /* FavouriteStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEA2412657408900E83B8B /* FavouriteStorageService.swift */; };
+		88AEA24626574B4B00E83B8B /* Favourites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88AEA24526574B4B00E83B8B /* Favourites.storyboard */; };
+		88AEA24926574B9900E83B8B /* FavouriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEA24826574B9900E83B8B /* FavouriteCell.swift */; };
+		88AEA24C26574BCF00E83B8B /* FavouritePresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AEA24B26574BCF00E83B8B /* FavouritePresentation.swift */; };
 		88B01F282651C36E00E84E69 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F272651C36E00E84E69 /* ImageCacheManager.swift */; };
 		88B01F2B2651C6EA00E84E69 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2A2651C6EA00E84E69 /* UIImage.swift */; };
 		88B01F2F26537D8200E84E69 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B01F2E26537D8200E84E69 /* Observable.swift */; };
@@ -124,6 +127,9 @@
 		88AEA22E26571AAE00E83B8B /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		88AEA23D2657407B00E83B8B /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		88AEA2412657408900E83B8B /* FavouriteStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteStorageService.swift; sourceTree = "<group>"; };
+		88AEA24526574B4B00E83B8B /* Favourites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favourites.storyboard; sourceTree = "<group>"; };
+		88AEA24826574B9900E83B8B /* FavouriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCell.swift; sourceTree = "<group>"; };
+		88AEA24B26574BCF00E83B8B /* FavouritePresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePresentation.swift; sourceTree = "<group>"; };
 		88B01F272651C36E00E84E69 /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		88B01F2A2651C6EA00E84E69 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		88B01F2E26537D8200E84E69 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
@@ -411,6 +417,9 @@
 		88B6975F2647CA0300E36A1F /* Favourites */ = {
 			isa = PBXGroup;
 			children = (
+				88AEA24526574B4B00E83B8B /* Favourites.storyboard */,
+				88AEA24826574B9900E83B8B /* FavouriteCell.swift */,
+				88AEA24B26574BCF00E83B8B /* FavouritePresentation.swift */,
 				88B6976B2647D9E200E36A1F /* FavouritesBuilder.swift */,
 				88B697722647DAEF00E36A1F /* FavouritesContract.swift */,
 				88B697602647CA2800E36A1F /* FavouritesVC.swift */,
@@ -494,6 +503,7 @@
 			files = (
 				8811FE8526487D6C00E78864 /* Games.storyboard in Resources */,
 				8894A19D24833F5B0009F8A6 /* LaunchScreen.storyboard in Resources */,
+				88AEA24626574B4B00E83B8B /* Favourites.storyboard in Resources */,
 				8894A1962483385F0009F8A6 /* Localizable.strings in Resources */,
 				88011EAE26560E4800C469F2 /* GameDetail.storyboard in Resources */,
 				885314E424791CD50054F839 /* Assets.xcassets in Resources */,
@@ -545,6 +555,7 @@
 				8894A1A3248457640009F8A6 /* GamesVM.swift in Sources */,
 				8894A1902483328B0009F8A6 /* GamesVC.swift in Sources */,
 				88B01F2F26537D8200E84E69 /* Observable.swift in Sources */,
+				88AEA24C26574BCF00E83B8B /* FavouritePresentation.swift in Sources */,
 				88B48598249571C8002D8DD8 /* NavigatingRouterProtocol.swift in Sources */,
 				8811FE92264894F500E78864 /* SearchResponseDTO.swift in Sources */,
 				88FD02B82656010A00470DBB /* GameDetailContract.swift in Sources */,
@@ -583,6 +594,7 @@
 				8894A1762483199E0009F8A6 /* MainRouter.swift in Sources */,
 				8894A170248314A40009F8A6 /* App.swift in Sources */,
 				88B01F342653814800E84E69 /* Game.swift in Sources */,
+				88AEA24926574B9900E83B8B /* FavouriteCell.swift in Sources */,
 				88961E5326480220008FA7ED /* Data.swift in Sources */,
 				88B6976C2647D9E200E36A1F /* FavouritesBuilder.swift in Sources */,
 				8898EDC42654881000EF97E5 /* StorageManager.swift in Sources */,

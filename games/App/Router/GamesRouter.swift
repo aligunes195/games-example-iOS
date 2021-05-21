@@ -23,7 +23,7 @@ final class GamesRouter: NavigatingRouterProtocol {
     }
     
     func start() {
-        (rootVC as! GamesVC).routerDelegate = self
+        (rootVC as? GamesVC)?.routerDelegate = self
         navController.setViewControllers([rootVC], animated: false)
     }
 }

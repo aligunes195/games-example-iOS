@@ -9,5 +9,20 @@
 import Foundation
 
 protocol FavouritesVMProtocol: class {
+    var delegate: FavouritesVMOutputDelegate? { get set }
+    
     func load()
+    
+    func numberOfFavourites() -> Int
+    func getFavouritePresentation(at indexPath: IndexPath) -> FavouritePresentation
+    func getGame(at indexPath: IndexPath) -> Game
+}
+
+protocol FavouritesVMOutputDelegate: class {
+    func reloadData(rows: [Int]?)
+    func deleteData(rows: [Int])
+}
+
+protocol FavouritesNavigationDelegate: class {
+    func showDetail(with game: Game)
 }

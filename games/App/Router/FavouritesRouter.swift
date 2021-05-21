@@ -23,6 +23,14 @@ final class FavouritesRouter: NavigatingRouterProtocol {
     }
     
     func start() {
+        (rootVC as? FavouritesVC)?.routerDelegate = self
         navController.setViewControllers([rootVC], animated: false)
+    }
+}
+
+extension FavouritesRouter: FavouritesNavigationDelegate {
+    func showDetail(with game: Game) {
+        let vc = GameDetailBuilder.build(game: game)
+        navController.pushViewController(vc, animated: true)
     }
 }

@@ -10,5 +10,6 @@ import Foundation
 
 enum StoryboardName: String {
     case games = "Games"
+    case favourites = "Favourites"
     case gameDetail = "GameDetail"
 }
