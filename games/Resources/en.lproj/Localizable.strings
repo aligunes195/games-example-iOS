@@ -18,3 +18,6 @@
 "FAVOURITE" = "Favourite";
 "FAVOURITED" = "Favourited";
 "DELETE_FAVOURITE" = "Delete From Favourites";
+"DELETE_FAVOURITE_MESSAGE" = "Are you sure to want to remove this game from favourites?";
+"DELETE" = "Delete";
+"CANCEL" = "Cancel";

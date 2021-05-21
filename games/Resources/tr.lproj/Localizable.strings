@@ -18,3 +18,6 @@
 "FAVOURITE" = "Favorilere Ekle";
 "FAVOURITED" = "Favorilere Eklendi";
 "DELETE_FAVOURITE" = "Favorilerden Sil";
+"DELETE_FAVOURITE_MESSAGE" = "Bu oyunu favorilerden çıkarmak istediğinize emin misiniz?";
+"DELETE" = "Sil";
+"CANCEL" = "İptal";

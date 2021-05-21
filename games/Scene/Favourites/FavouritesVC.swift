@@ -82,7 +82,14 @@ extension FavouritesVC {
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let deleteAction = UITableViewRowAction(style: .destructive, title: String.localized("DELETE_FAVOURITE")) { (action, indexPath) in
-            self.vm.deleteFavourite(at: indexPath)
+            let alertController = UIAlertController(title: String.localized("DELETE_FAVOURITE"),
+                                                    message: String.localized("DELETE_FAVOURITE_MESSAGE"),
+                                                    preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: String.localized("CANCEL"), style: .cancel))
+            alertController.addAction(UIAlertAction(title: String.localized("DELETE"), style: .default) { _ in
+                self.vm.deleteFavourite(at: indexPath)
+            })
+            self.present(alertController, animated: true, completion: nil)
         }
         return [deleteAction]
     }
