@@ -22,6 +22,7 @@ protocol FavouritesVMProtocol: class {
 protocol FavouritesVMOutputDelegate: class {
     func reloadData(rows: [Int]?)
     func deleteData(rows: [Int])
+    func updateTitle()
 }
 
 protocol FavouritesNavigationDelegate: class {

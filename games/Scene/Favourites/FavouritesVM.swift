@@ -13,7 +13,11 @@ final class FavouritesVM: FavouritesVMProtocol {
     
     private let favouriteStorageService: FavouriteStorageService
     
-    private var items = [Game]()
+    private var items = [Game]() {
+        didSet {
+            self.delegate?.updateTitle()
+        }
+    }
     
     init() {
         guard let container = app.container as? MainContainer else {

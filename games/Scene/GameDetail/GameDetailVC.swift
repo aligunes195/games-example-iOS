@@ -94,8 +94,8 @@ final class GameDetailVC: UIViewController {
             gameDescriptionLabel.text = description
         }
         self.view.setNeedsLayout()
-        if let imageData = item.imageData?.data,
-           let image = UIImage(data: imageData) {
+        
+        func adjustImageView(_ image: UIImage) {
             gameImageView.image = image
             let newConstant = image.size.height * (self.gameImageView.frame.size.width / image.size.width)
             if self.gameImageViewHeightConstraint.constant != newConstant {
@@ -103,6 +103,13 @@ final class GameDetailVC: UIViewController {
                 self.view.layoutIfNeeded()
                 self.gradient.frame = self.gradientView.frame
             }
+        }
+        
+        if let imageData = item.imageData?.data,
+           let image = UIImage(data: imageData) {
+            adjustImageView(image)
+        } else if let image = UIImage(named: "placeholder") {
+            adjustImageView(image)
         }
     }
     

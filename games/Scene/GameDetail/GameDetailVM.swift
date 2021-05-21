@@ -37,7 +37,12 @@ final class GameDetailVM: GameDetailVMProtocol {
     
     func load() {
         if let url = game.imageUrl {
-            game.imageData = self.imageCacheManager.getImage(with: url)
+            if game.thumbnailData == nil {
+                game.thumbnailData = self.imageCacheManager.getThumbnail(with: url)
+            }
+            if game.imageData == nil {
+                game.imageData = self.imageCacheManager.getImage(with: url)
+            }
         }
         delegate?.updateGamePresentation(GameDetailPresentation(game, isFavourite: isFavourite))
         

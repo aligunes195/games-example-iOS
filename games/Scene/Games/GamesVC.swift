@@ -83,6 +83,9 @@ extension GamesVC {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 0, searchController.isActive {
+            searchController.searchBar.resignFirstResponder()
+        }
         guard !loadingNextPage else { return }
         
         let topPosition = scrollView.contentOffset.y
@@ -112,7 +115,7 @@ extension GamesVC: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        vm.query = searchText
+        vm.query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
 

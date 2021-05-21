@@ -44,14 +44,6 @@ final class FavouritesVC: UITableViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         vm.load()
-        updateTitle()
-    }
-    
-    private func updateTitle() {
-        let count = vm.numberOfFavourites()
-        title = count > 0
-            ? String.localized("FAVOURITES_TITLE_NUMBER", "\(vm.numberOfFavourites())")
-            : String.localized("FAVOURITES_TITLE")
     }
     
     private func addEmptyViewConstraints() {
@@ -98,7 +90,6 @@ extension FavouritesVC {
 
 extension FavouritesVC: FavouritesVMOutputDelegate {
     func reloadData(rows: [Int]?) {
-        defer { updateTitle() }
         guard let rows = rows else {
             tableView.reloadData()
             return
@@ -108,6 +99,12 @@ extension FavouritesVC: FavouritesVMOutputDelegate {
     
     func deleteData(rows: [Int]) {
         tableView.deleteRows(at: rows.map { IndexPath(row: $0, section: 0) }, with: .automatic)
-        updateTitle()
+    }
+    
+    func updateTitle() {
+        let count = vm.numberOfFavourites()
+        title = count > 0
+            ? String.localized("FAVOURITES_TITLE_NUMBER", "\(vm.numberOfFavourites())")
+            : String.localized("FAVOURITES_TITLE")
     }
 }
