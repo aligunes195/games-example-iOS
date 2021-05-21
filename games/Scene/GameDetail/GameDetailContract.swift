@@ -9,7 +9,11 @@
 import Foundation
 
 protocol GameDetailVMProtocol: class {
-    var imageDataWrapper: DataWrapper? { get }
+    var delegate: GameDetailVMOutputDelegate? { get set }
     
     func load()
+}
+
+protocol GameDetailVMOutputDelegate: class {
+    func updateGamePresentation(_ gamePresentation: GameDetailPresentation)
 }

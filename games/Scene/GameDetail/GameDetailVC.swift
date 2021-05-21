@@ -9,13 +9,28 @@
 import UIKit
 
 final class GameDetailVC: UIViewController {
-    var vm: GameDetailVMProtocol!
+    var vm: GameDetailVMProtocol! {
+        didSet {
+            vm.delegate = self
+        }
+    }
+    
+    private var item: GameDetailPresentation! {
+        didSet {
+            setItem()
+        }
+    }
     
     @IBOutlet private weak var gameImageView: UIImageView!
     @IBOutlet private weak var gameNameLabel: UILabel!
     @IBOutlet private weak var gradientView: UIView!
     @IBOutlet private weak var gameDescriptionLabel: UILabel!
+    @IBOutlet private weak var gameDescriptionView: UIView!
+    @IBOutlet private weak var redditView: UIView!
+    @IBOutlet private weak var websiteView: UIView!
     @IBOutlet private weak var gameImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var redditViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var websiteViewHeightConstraint: NSLayoutConstraint!
     
     private let gradient = CAGradientLayer()
     
@@ -26,10 +41,9 @@ final class GameDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
         
-        if let imageData = vm.imageDataWrapper?.data {
-            gameImageView.image = UIImage(data: imageData)
-        }
+        vm.load()
         
         gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
         gradient.locations = [0.0, 1.0]
@@ -37,7 +51,9 @@ final class GameDetailVC: UIViewController {
         
         gameNameLabel.adjustsFontSizeToFitWidth = true
         gameNameLabel.minimumScaleFactor = 0.6
-        gameNameLabel.text = "Grand Theft Auto V"
+        
+        redditView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(redditLinkClicked)))
+        websiteView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(websiteLinkClicked)))
     }
     
     override func viewDidLayoutSubviews() {
@@ -53,8 +69,52 @@ final class GameDetailVC: UIViewController {
         }
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
+    private func setItem() {
+        gameNameLabel.text = item.name
+        if item.redditUrl != nil {
+            redditViewHeightConstraint.constant = 60
+            redditView.isHidden = false
+        } else {
+            redditViewHeightConstraint.constant = 0
+            redditView.isHidden = true
+        }
+        if item.websiteUrl != nil {
+            websiteViewHeightConstraint.constant = 60
+            websiteView.isHidden = false
+        } else {
+            websiteViewHeightConstraint.constant = 0
+            websiteView.isHidden = true
+        }
+        gameDescriptionView.isHidden = item.description == nil
+        if let description = item.description {
+            gameDescriptionLabel.text = description
+        }
+        self.view.setNeedsLayout()
+        if let imageData = item.imageData?.data,
+           let image = UIImage(data: imageData) {
+            gameImageView.image = image
+            let newConstant = image.size.height * (self.gameImageView.frame.size.width / image.size.width)
+            if self.gameImageViewHeightConstraint.constant != newConstant {
+                self.gameImageViewHeightConstraint.constant = newConstant
+                self.view.layoutIfNeeded()
+                self.gradient.frame = self.gradientView.frame
+            }
+        }
+    }
+    
+    @objc private func redditLinkClicked() {
+        guard let url = URL(string: item.redditUrl!) else { return }
+        UIApplication.shared.open(url)
+    }
+    
+    @objc private func websiteLinkClicked() {
+        guard let url = URL(string: item.websiteUrl!) else { return }
+        UIApplication.shared.open(url)
+    }
+}
+
+extension GameDetailVC: GameDetailVMOutputDelegate {
+    func updateGamePresentation(_ gamePresentation: GameDetailPresentation) {
+        self.item = gamePresentation
     }
 }
