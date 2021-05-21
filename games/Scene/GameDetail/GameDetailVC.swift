@@ -70,6 +70,10 @@ final class GameDetailVC: UIViewController {
     }
     
     private func setItem() {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: item.isFavourite ? "Favourited" : "Favourite",
+                                                                 style: .plain,
+                                                                 target: self,
+                                                                 action: #selector(favouriteButtonClicked))
         gameNameLabel.text = item.name
         if item.redditUrl != nil {
             redditViewHeightConstraint.constant = 60
@@ -110,6 +114,10 @@ final class GameDetailVC: UIViewController {
     @objc private func websiteLinkClicked() {
         guard let url = URL(string: item.websiteUrl!) else { return }
         UIApplication.shared.open(url)
+    }
+    
+    @objc private func favouriteButtonClicked() {
+        vm.toggleFavourite()
     }
 }
 

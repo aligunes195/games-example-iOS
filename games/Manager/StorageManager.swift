@@ -22,15 +22,15 @@ final class StorageManager {
                                           qos: .userInitiated,
                                           attributes: .concurrent)
     
-    func save(_ key: String, value: Any) {
+    func save(_ key: String, value: Data) {
         writeQueue.sync {
             self.userDefaults.set(value, forKey: key)
         }
     }
     
-    func load(_ key: String) -> Any? {
+    func load(_ key: String) -> Data? {
         readQueue.sync {
-            return self.userDefaults.value(forKey: key)
+            return self.userDefaults.value(forKey: key) as? Data
         }
     }
     

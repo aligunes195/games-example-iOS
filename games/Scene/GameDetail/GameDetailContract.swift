@@ -12,6 +12,7 @@ protocol GameDetailVMProtocol: class {
     var delegate: GameDetailVMOutputDelegate? { get set }
     
     func load()
+    func toggleFavourite()
 }
 
 protocol GameDetailVMOutputDelegate: class {

@@ -1,5 +1,5 @@
 //
-//  StorageProvider.swift
+//  StorageService.swift
 //  games
 //
 //  Created by Ali Güneş on 19.05.2021.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class StorageProvider {
+class StorageService {
     internal let storageManager: StorageManager
     
     init(storageManager: StorageManager) {
@@ -16,6 +16,6 @@ class StorageProvider {
     }
     
     func key(with id: Any) -> String {
-        fatalError("StorageProvider: should be overwritten")
+        fatalError("StorageService: should be overwritten")
     }
 }

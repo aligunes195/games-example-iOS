@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class FavouriteStorageModel {
+final class FavouriteStorageModel: Codable {
     let id: Int
     let name: String
     let metacritic: Int?

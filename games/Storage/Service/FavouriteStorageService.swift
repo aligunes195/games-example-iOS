@@ -1,5 +1,5 @@
 //
-//  FavouriteStorageProvider.swift
+//  FavouriteStorageService.swift
 //  games
 //
 //  Created by Ali Güneş on 19.05.2021.
@@ -8,9 +8,9 @@
 
 import Foundation
 
-final class FavouriteStorageProvider: StorageProvider {
+final class FavouriteStorageService: StorageService {
     override func key(with id: Any) -> String {
-        return "\(AppConfiguration.shared.bundleIdentifier).favourite.storage.provider.\(id)"
+        return "\(AppConfiguration.shared.bundleIdentifier).favourite.storage.service.\(id)"
     }
     
     func addToFavourites(_ game: Game) throws {
@@ -23,7 +23,7 @@ final class FavouriteStorageProvider: StorageProvider {
             let imageUrl = AppConfiguration.shared.imagesURL.appendingPathComponent("\(game.id)")
             try dataWrapper.data.write(to: imageUrl)
         }
-        self.storageManager.save(key(with: model.id), value: model)
+        self.storageManager.save(key(with: model.id), value: try model.toJSONData())
     }
     
     func removeFromFavourites(_ id: Int) throws {
@@ -39,9 +39,11 @@ final class FavouriteStorageProvider: StorageProvider {
     }
     
     func getFavourite(_ id: Int) throws -> Game? {
-        guard let model = self.storageManager.load(key(with: id)) as? FavouriteStorageModel else {
+        guard let data = self.storageManager.load(key(with: id)) else {
             return nil
         }
+        let model = try data.toJSONObject(FavouriteStorageModel.self)
+        
         let thumbnailData: DataWrapper?
         let thumbnailUrl = AppConfiguration.shared.thumbnailsURL.appendingPathComponent("\(id)")
         if FileManager.default.fileExists(atPath: thumbnailUrl.path) {

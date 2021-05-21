@@ -11,6 +11,8 @@ import Foundation
 final class GameDetailPresentation {
     private let game: Game
     
+    let isFavourite: Bool
+    
     var imageData: DataWrapper? {
         return game.imageData ?? game.thumbnailData
     }
@@ -31,7 +33,8 @@ final class GameDetailPresentation {
         return game.detail?.websiteUrl
     }
     
-    init(_ game: Game) {
+    init(_ game: Game, isFavourite: Bool) {
         self.game = game
+        self.isFavourite = isFavourite
     }
 }

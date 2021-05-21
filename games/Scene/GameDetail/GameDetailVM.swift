@@ -15,6 +15,15 @@ final class GameDetailVM: GameDetailVMProtocol {
     
     private let networkManager: NetworkManager
     private let imageCacheManager: ImageCacheManager
+    private let favouriteStorageService: FavouriteStorageService
+    
+    private var isFavourite: Bool {
+        do {
+            return try favouriteStorageService.getFavourite(game.id) != nil
+        } catch {
+            return false
+        }
+    }
     
     init(game: Game) {
         guard let container = app.container as? MainContainer else {
@@ -22,6 +31,7 @@ final class GameDetailVM: GameDetailVMProtocol {
         }
         self.networkManager = container.networkManager
         self.imageCacheManager = container.imageCacheManager
+        self.favouriteStorageService = FavouriteStorageService(storageManager: container.storageManager)
         self.game = game
     }
     
@@ -29,7 +39,7 @@ final class GameDetailVM: GameDetailVMProtocol {
         if let url = game.imageUrl {
             game.imageData = self.imageCacheManager.getImage(with: url)
         }
-        delegate?.updateGamePresentation(GameDetailPresentation(game))
+        delegate?.updateGamePresentation(GameDetailPresentation(game, isFavourite: isFavourite))
         
         if game.detail == nil {
             let dto = DetailRequestDTO(key: AppConfiguration.shared.apiKey)
@@ -42,7 +52,7 @@ final class GameDetailVM: GameDetailVMProtocol {
                                                   redditUrl: value.reddit_url != "" ? value.reddit_url : nil,
                                                   websiteUrl: value.website != "" ? value.website : nil)
                     DispatchQueue.main.async {
-                        self.delegate?.updateGamePresentation(GameDetailPresentation(self.game))
+                        self.delegate?.updateGamePresentation(GameDetailPresentation(self.game, isFavourite: self.isFavourite))
                     }
                 case .failure(let error):
                     printError(error)
@@ -65,12 +75,23 @@ final class GameDetailVM: GameDetailVMProtocol {
                     self.game.thumbnailData = compressedDataWrapper
                     
                     DispatchQueue.main.async {
-                        self.delegate?.updateGamePresentation(GameDetailPresentation(self.game))
+                        self.delegate?.updateGamePresentation(GameDetailPresentation(self.game, isFavourite: self.isFavourite))
                     }
                 case .failure(let error):
                     printError(error)
                 }
             }
+        }
+    }
+    
+    func toggleFavourite() {
+        do {
+            isFavourite
+                ? try favouriteStorageService.removeFromFavourites(game.id)
+                : try favouriteStorageService.addToFavourites(game)
+            self.delegate?.updateGamePresentation(GameDetailPresentation(self.game, isFavourite: self.isFavourite))
+        } catch {
+            printError(error)
         }
     }
 }
