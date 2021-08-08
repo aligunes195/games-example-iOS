@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol GamesVMProtocol: class {
+protocol GamesVMProtocol: AnyObject {
     var delegate: GamesVMOutputDelegate? { get set }
     var query: String { get set }
     
@@ -21,12 +21,12 @@ protocol GamesVMProtocol: class {
     func getGame(at indexPath: IndexPath) -> Game
 }
 
-protocol GamesVMOutputDelegate: class {
+protocol GamesVMOutputDelegate: AnyObject {
     func isVisible(id: Int) -> Bool
     func reloadData(rows: [Int]?)
     func insertData(rows: [Int])
 }
 
-protocol GamesNavigationDelegate: class {
+protocol GamesNavigationDelegate: AnyObject {
     func showDetail(with game: Game)
 }

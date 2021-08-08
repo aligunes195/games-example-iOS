@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ContainerProtocol: class {
+protocol ContainerProtocol: AnyObject {
     func load()
     func unload()
     

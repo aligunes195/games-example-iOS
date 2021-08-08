@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol FavouritesVMProtocol: class {
+protocol FavouritesVMProtocol: AnyObject {
     var delegate: FavouritesVMOutputDelegate? { get set }
     
     func load()
@@ -19,12 +19,12 @@ protocol FavouritesVMProtocol: class {
     func deleteFavourite(at indexPath: IndexPath)
 }
 
-protocol FavouritesVMOutputDelegate: class {
+protocol FavouritesVMOutputDelegate: AnyObject {
     func reloadData(rows: [Int]?)
     func deleteData(rows: [Int])
     func updateTitle()
 }
 
-protocol FavouritesNavigationDelegate: class {
+protocol FavouritesNavigationDelegate: AnyObject {
     func showDetail(with game: Game)
 }

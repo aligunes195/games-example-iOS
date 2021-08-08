@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol GameDetailVMProtocol: class {
+protocol GameDetailVMProtocol: AnyObject {
     var delegate: GameDetailVMOutputDelegate? { get set }
     
     func load()
     func toggleFavourite()
 }
 
-protocol GameDetailVMOutputDelegate: class {
+protocol GameDetailVMOutputDelegate: AnyObject {
     func updateGamePresentation(_ gamePresentation: GameDetailPresentation)
 }

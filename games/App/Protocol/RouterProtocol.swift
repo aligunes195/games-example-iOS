@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol RouterProtocol: class {
+protocol RouterProtocol: AnyObject {
     var rootVC: UIViewController { get }
     
     func start()
